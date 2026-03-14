@@ -27,7 +27,7 @@
           </p>
         </div>
 
-        <div class="order-layout">
+        <div id="orderPageContent" class="order-layout">
           <div class="card">
             <h3 class="card-title">Order Summary</h3>
             <p class="card-note">Your selected scent or custom blend will appear here.</p>
@@ -45,7 +45,7 @@
               <div class="form-grid">
                 <div class="form-group">
                   <label for="fullName">Full Name</label>
-                  <input id="fullName" name="fullName" type="text" required />
+                  <input id="fullName" name="full_name" type="text" required />
                 </div>
 
                 <div class="form-group">
@@ -70,7 +70,7 @@
 
                 <div class="form-group">
                   <label for="orderType">Order Type</label>
-                  <select id="orderType" name="orderType" required>
+                  <select id="orderType" name="order_type" required>
                     <option value="">Select order type</option>
                     <option value="Single Scent">Single Scent</option>
                     <option value="Custom Blend">Custom Blend</option>
@@ -79,7 +79,7 @@
 
                 <div class="form-group">
                   <label for="bottleSize">Bottle Size</label>
-                  <select id="bottleSize" name="bottleSize" required>
+                  <select id="bottleSize" name="bottle_size" required>
                     <option value="">Select bottle size</option>
                     <option value="10 ml">10 ml Tube</option>
                     <option value="30 ml">30 ml Square</option>
@@ -99,18 +99,32 @@
                 </div>
               </div>
 
-              <input type="hidden" id="summaryOrderMode" name="summaryOrderMode" />
-              <input type="hidden" id="summarySelection" name="summarySelection" />
-              <input type="hidden" id="summaryQuizAnswers" name="summaryQuizAnswers" />
-              <input type="hidden" id="summaryBlendVerdict" name="summaryBlendVerdict" />
-              <input type="hidden" id="summaryBlendStyle" name="summaryBlendStyle" />
-              <input type="hidden" id="summaryBlendRatios" name="summaryBlendRatios" />
+              <input type="hidden" id="summaryOrderMode" name="summary_order_mode" />
+              <input type="hidden" id="summarySelection" name="summary_selection" />
+              <input type="hidden" id="summaryQuizAnswers" name="summary_quiz_answers" />
+              <input type="hidden" id="summaryBlendVerdict" name="summary_blend_verdict" />
+              <input type="hidden" id="summaryBlendStyle" name="summary_blend_style" />
+              <input type="hidden" id="summaryBlendRatios" name="summary_blend_ratios" />
 
               <div class="submit-wrap">
                 <button type="submit" class="btn btn-primary" id="submitOrderBtn">Send Order</button>
                 <p id="orderStatus" class="order-status"></p>
               </div>
             </form>
+          </div>
+        </div>
+
+        <div id="orderSuccessCard" class="card success-card" hidden>
+          <h3 class="card-title">Thank you for your order</h3>
+          <p class="card-note">
+            Your order has been sent successfully. We’ll contact you through Instagram or email regarding payment and delivery.
+          </p>
+
+          <div id="successSummary" class="success-summary"></div>
+
+          <div class="success-actions">
+            <a href="../index.html" class="btn btn-primary">Back to Home</a>
+            <a href="./mix.html?mode=direct" class="btn btn-ghost">Create Another Blend</a>
           </div>
         </div>
       </div>

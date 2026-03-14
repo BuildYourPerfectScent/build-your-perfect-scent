@@ -2,6 +2,9 @@ const orderSummary = document.getElementById("orderSummary");
 const orderForm = document.getElementById("orderForm");
 const orderStatus = document.getElementById("orderStatus");
 const submitOrderBtn = document.getElementById("submitOrderBtn");
+const orderPageContent = document.getElementById("orderPageContent");
+const orderSuccessCard = document.getElementById("orderSuccessCard");
+const successSummary = document.getElementById("successSummary");
 
 const orderTypeField = document.getElementById("orderType");
 
@@ -12,14 +15,19 @@ const summaryBlendVerdict = document.getElementById("summaryBlendVerdict");
 const summaryBlendStyle = document.getElementById("summaryBlendStyle");
 const summaryBlendRatios = document.getElementById("summaryBlendRatios");
 
-const EMAILJS_PUBLIC_KEY = "olJtS4gyuhMqLH3u2GxdE";
-const EMAILJS_SERVICE_ID = "service_h9kaics";
-const EMAILJS_TEMPLATE_ID = "template_j7ie0sq";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.emailjs) {
     emailjs.init({
-      publicKey: EMAILJS_PUBLIC_KEY
+      publicKey: EMAILJS_PUBLIC_KEY,
+      blockHeadless: true,
+      limitRate: {
+        id: "order-form",
+        throttle: 10000
+      }
     });
   }
 
@@ -152,7 +160,7 @@ function bindOrderForm() {
         payload
       );
 
-      setStatus("Order sent successfully. Please check your email or Instagram for follow-up.", true, true);
+      showSuccessScreen(payload);
       orderForm.reset();
 
       summaryOrderMode.value = "";
@@ -170,14 +178,34 @@ function bindOrderForm() {
   });
 }
 
-function setStatus(message, neutral = false, success = false) {
+function showSuccessScreen(payload) {
+  orderPageContent.hidden = true;
+  orderSuccessCard.hidden = false;
+
+  successSummary.innerHTML = `
+    <p><strong>Name:</strong> ${escapeHtml(payload.full_name)}</p>
+    <p><strong>Instagram:</strong> ${escapeHtml(payload.instagram)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>
+    <p><strong>Order Type:</strong> ${escapeHtml(payload.order_type)}</p>
+    <p><strong>Bottle Size:</strong> ${escapeHtml(payload.bottle_size)}</p>
+    <p><strong>Quantity:</strong> ${escapeHtml(payload.quantity)}</p>
+    ${
+      payload.summary_selection
+        ? `<p><strong>Selection:</strong> ${escapeHtml(payload.summary_selection)}</p>`
+        : ""
+    }
+    ${
+      payload.summary_blend_ratios
+        ? `<p><strong>Recommended Blend:</strong><br>${escapeHtml(payload.summary_blend_ratios).replaceAll("\n", "<br>")}</p>`
+        : ""
+    }
+  `;
+}
+
+function setStatus(message, neutral = false) {
   orderStatus.textContent = message;
   orderStatus.className = "order-status";
-
-  if (success) {
-    orderStatus.classList.add("status-success");
-    return;
-  }
 
   if (!neutral) {
     orderStatus.classList.add("status-error");
