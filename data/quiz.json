@@ -1,0 +1,162 @@
+{
+  "quiz_versions": {
+    "3": [
+      {
+        "text": "Which direction do you usually prefer?",
+        "options": [
+          { "label": "Fresh / clean / crisp", "add": ["fresh"] },
+          { "label": "Sweet / warm / cozy", "add": ["sweet"] },
+          { "label": "Floral / soft / romantic", "add": ["floral"] },
+          { "label": "Woody / deep / sophisticated", "add": ["woody"] }
+        ]
+      },
+      {
+        "text": "How noticeable do you want it to be?",
+        "options": [
+          { "label": "Soft (close-to-skin)", "add": ["soft"] },
+          { "label": "Moderate (noticeable nearby)", "add": ["moderate"] },
+          { "label": "Strong (turns heads)", "add": ["strong"] }
+        ]
+      },
+      {
+        "text": "When will you wear it most?",
+        "options": [
+          { "label": "Daytime / office / errands", "add": ["day"] },
+          { "label": "Night / dates / going out", "add": ["night"] },
+          { "label": "Special occasions", "add": ["statement", "luxury"] }
+        ]
+      }
+    ],
+    "5": [
+      {
+        "text": "Pick the scent type you’re most drawn to:",
+        "options": [
+          { "label": "Citrus / fresh", "add": ["fresh"] },
+          { "label": "Vanilla / sweet", "add": ["sweet", "vanilla"] },
+          { "label": "Floral", "add": ["floral"] },
+          { "label": "Woody", "add": ["woody"] },
+          { "label": "Amber / warm", "add": ["amber", "warm"] }
+        ]
+      },
+      {
+        "text": "How sweet do you like your perfume?",
+        "options": [
+          { "label": "Not sweet", "add": ["fresh"] },
+          { "label": "Balanced", "add": ["moderate"] },
+          { "label": "Dessert sweet", "add": ["sweet", "gourmand"] }
+        ]
+      },
+      {
+        "text": "Do you want subtle or attention-grabbing?",
+        "options": [
+          { "label": "Subtle", "add": ["soft"] },
+          { "label": "Balanced", "add": ["moderate"] },
+          { "label": "Attention-grabbing", "add": ["strong", "statement"] }
+        ]
+      },
+      {
+        "text": "When will you wear it most?",
+        "options": [
+          { "label": "Hot weather / summer", "add": ["fresh", "aquatic"] },
+          { "label": "All year", "add": ["allyear"] },
+          { "label": "Cool weather / fall-winter", "add": ["warm", "amber", "vanilla"] }
+        ]
+      },
+      {
+        "text": "Choose a vibe:",
+        "options": [
+          { "label": "Clean & polished", "add": ["fresh", "aromatic"] },
+          { "label": "Romantic & soft", "add": ["floral", "soft"] },
+          { "label": "Bold & sexy", "add": ["night", "strong"] },
+          { "label": "Sporty & energetic", "add": ["sporty", "fresh"] },
+          { "label": "Luxurious & unique", "add": ["luxury", "statement"] }
+        ]
+      }
+    ],
+    "10": [
+      {
+        "text": "Your overall preference is closest to:",
+        "options": [
+          { "label": "Fresh", "add": ["fresh"] },
+          { "label": "Sweet / Gourmand", "add": ["sweet", "gourmand"] },
+          { "label": "Floral", "add": ["floral"] },
+          { "label": "Woody", "add": ["woody"] },
+          { "label": "Amber / Warm", "add": ["amber", "warm"] }
+        ]
+      },
+      {
+        "text": "How do you feel about vanilla?",
+        "options": [
+          { "label": "Love it", "add": ["vanilla", "sweet"] },
+          { "label": "Only a little", "add": ["warm"] },
+          { "label": "Not for me", "add": ["fresh"] }
+        ]
+      },
+      {
+        "text": "Do you enjoy musky dry-downs?",
+        "options": [
+          { "label": "Yes", "add": ["musky"] },
+          { "label": "Sometimes", "add": ["moderate"] },
+          { "label": "No", "add": ["fresh"] }
+        ]
+      },
+      {
+        "text": "Do you like aquatic / airy scents?",
+        "options": [
+          { "label": "Yes", "add": ["aquatic", "fresh"] },
+          { "label": "A little", "add": ["fresh"] },
+          { "label": "No", "add": ["woody", "amber"] }
+        ]
+      },
+      {
+        "text": "Do you like fruity notes?",
+        "options": [
+          { "label": "Yes", "add": ["fruity"] },
+          { "label": "Sometimes", "add": ["moderate"] },
+          { "label": "No", "add": ["woody"] }
+        ]
+      },
+      {
+        "text": "Do you enjoy spicy warmth?",
+        "options": [
+          { "label": "Yes", "add": ["spicy"] },
+          { "label": "Sometimes", "add": ["warm"] },
+          { "label": "No", "add": ["soft"] }
+        ]
+      },
+      {
+        "text": "Primary use:",
+        "options": [
+          { "label": "Office / daytime", "add": ["day"] },
+          { "label": "Dates / night out", "add": ["night"] },
+          { "label": "Special events", "add": ["luxury", "statement"] }
+        ]
+      },
+      {
+        "text": "How should people experience your scent?",
+        "options": [
+          { "label": "Discover it up close", "add": ["soft"] },
+          { "label": "Noticeable when near", "add": ["moderate"] },
+          { "label": "Fill the room", "add": ["strong"] }
+        ]
+      },
+      {
+        "text": "How important is long wear?",
+        "options": [
+          { "label": "Not critical", "add": ["soft"] },
+          { "label": "Medium", "add": ["moderate"] },
+          { "label": "Very important", "add": ["strong"] }
+        ]
+      },
+      {
+        "text": "Pick your signature statement:",
+        "options": [
+          { "label": "Refined & classic", "add": ["aromatic", "woody"] },
+          { "label": "Playful & cozy", "add": ["sweet", "cozy"] },
+          { "label": "Luxury & unique", "add": ["luxury", "statement"] },
+          { "label": "Fresh & sporty", "add": ["fresh", "sporty"] }
+        ]
+      }
+    ]
+  }
+}

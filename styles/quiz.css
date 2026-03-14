@@ -1,0 +1,141 @@
+.level-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+
+.level-btn{
+  text-align:left;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.05);
+  padding:16px;
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  transition:all .15s ease;
+}
+
+.level-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.07);
+}
+
+.level-btn.is-active{
+  background:rgba(255,255,255,0.12);
+}
+
+.level-num{
+  font-family:var(--serif);
+  font-size:28px;
+  font-weight:700;
+}
+
+.level-label{
+  display:block;
+  margin-top:6px;
+  font-weight:700;
+}
+
+.level-desc{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.question-card{
+  margin-top:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.07);
+  border-radius:var(--radius);
+  padding:18px;
+}
+
+.q-title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  display:flex;
+  gap:10px;
+  padding:12px;
+  border:1px solid var(--stroke);
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,0.04);
+  cursor:pointer;
+}
+
+.option:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+.progress{
+  min-width:200px;
+}
+
+.progress-text{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.progress-bar{
+  height:8px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.03);
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.progress-fill{
+  height:100%;
+  background:rgba(255,255,255,0.35);
+  width:0%;
+}
+
+.quiz-actions{
+  margin-top:18px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.results-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+
+.result-card{
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:14px;
+}
+
+.result-name{
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:700;
+}
+
+.result-meta{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:14px;
+}

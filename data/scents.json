@@ -1,0 +1,60 @@
+{
+  "scents": [
+    {
+      "name": "Dior Sauvage",
+      "tags": ["fresh", "woody", "spicy", "strong", "day", "night"]
+    },
+    {
+      "name": "Issey Miyake Women",
+      "tags": ["fresh", "floral", "aquatic", "soft", "day"]
+    },
+    {
+      "name": "Issey Miyake Men",
+      "tags": ["fresh", "woody", "aquatic", "moderate", "day"]
+    },
+    {
+      "name": "Parfums de Marly Valaya",
+      "tags": ["floral", "musky", "fruity", "moderate", "day", "luxury"]
+    },
+    {
+      "name": "Ariana Grande Cloud",
+      "tags": ["sweet", "gourmand", "musky", "moderate", "day", "cozy"]
+    },
+    {
+      "name": "Lanvin Éclat d’Arpège",
+      "tags": ["floral", "fruity", "soft", "day"]
+    },
+    {
+      "name": "Burberry Goddess",
+      "tags": ["sweet", "vanilla", "warm", "moderate", "night", "cozy"]
+    },
+    {
+      "name": "DKNY Be Delicious",
+      "tags": ["fresh", "fruity", "moderate", "day", "spring"]
+    },
+    {
+      "name": "Baccarat Rouge 540",
+      "tags": ["amber", "woody", "strong", "night", "luxury", "statement"]
+    },
+    {
+      "name": "YSL Black Opium",
+      "tags": ["sweet", "vanilla", "gourmand", "strong", "night"]
+    },
+    {
+      "name": "Jean Paul Gaultier Le Male",
+      "tags": ["sweet", "aromatic", "strong", "night"]
+    },
+    {
+      "name": "Bleu de Chanel",
+      "tags": ["fresh", "woody", "aromatic", "moderate", "day", "allyear"]
+    },
+    {
+      "name": "Azzaro The Most Wanted",
+      "tags": ["sweet", "spicy", "strong", "night"]
+    },
+    {
+      "name": "Paco Rabanne Invictus",
+      "tags": ["fresh", "aquatic", "strong", "day", "sporty"]
+    }
+  ]
+}
