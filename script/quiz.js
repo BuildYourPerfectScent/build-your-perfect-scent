@@ -140,8 +140,6 @@ function renderQuestion() {
 }
 
 function showResults() {
-  quizArea.hidden = true;
-  resultsArea.hidden = false;
 
   const selectedTags = answers.flat();
 
@@ -151,9 +149,6 @@ function showResults() {
 
       selectedTags.forEach((tag) => {
         if (scent.tags.includes(tag)) score += 2;
-        if (tag === "warm" && scent.tags.includes("amber")) score += 1;
-        if (tag === "gourmand" && scent.tags.includes("sweet")) score += 1;
-        if (tag === "statement" && scent.tags.includes("luxury")) score += 1;
       });
 
       return { ...scent, score };
@@ -163,19 +158,17 @@ function showResults() {
   const topResults = scored.slice(0,3);
   const moreResults = scored.slice(3,6);
 
-// Save results for results page
-sessionStorage.setItem(
-  "quizTopResults",
-  JSON.stringify(topResults)
-);
+  sessionStorage.setItem(
+    "quizTopResults",
+    JSON.stringify(topResults)
+  );
 
-sessionStorage.setItem(
-  "quizMoreResults",
-  JSON.stringify(moreResults)
-);
+  sessionStorage.setItem(
+    "quizMoreResults",
+    JSON.stringify(moreResults)
+  );
 
-// Redirect to results page
-window.location.href = "../pages/results.html";
+  window.location.href = "../pages/results.html";
 }
 
 function resetQuiz() {
