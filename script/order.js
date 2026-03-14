@@ -16,7 +16,7 @@ const summaryBlendStyle = document.getElementById("summaryBlendStyle");
 const summaryBlendRatios = document.getElementById("summaryBlendRatios");
 
 const EMAILJS_PUBLIC_KEY = "ckNjMhy5tH8CWIjy5";
-const EMAILJS_SERVICE_ID = "template_j7ie0sq";
+const EMAILJS_SERVICE_ID = "service_5btu3p8";
 const EMAILJS_TEMPLATE_ID = "template_j7ie0sq";
 
 document.addEventListener("DOMContentLoaded", () => {
