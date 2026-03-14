@@ -1,11 +1,8 @@
 const resultsGrid = document.getElementById("resultsGrid");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const topResults =
-    JSON.parse(sessionStorage.getItem("quizTopResults")) || [];
-
-  const moreResults =
-    JSON.parse(sessionStorage.getItem("quizMoreResults")) || [];
+  const topResults = JSON.parse(sessionStorage.getItem("quizTopResults")) || [];
+  const moreResults = JSON.parse(sessionStorage.getItem("quizMoreResults")) || [];
 
   if (!topResults.length) {
     resultsGrid.innerHTML = `
@@ -27,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Matches: <strong>${scent.score}</strong><br>
         Profile: ${escapeHtml(prettyTags(scent.tags))}
       </p>
+      <span class="result-audience">${escapeHtml(scent.audience || "Unisex")}</span>
 
       <div class="result-actions">
         <button
@@ -44,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="result-card" style="grid-column: 1 / -1;">
       <h4 class="result-name">Additional Recommendations</h4>
       <p class="result-meta">
-        ${moreResults.map((p) => escapeHtml(p.name)).join(" • ")}
+        ${moreResults.map((p) => `${escapeHtml(p.name)} (${escapeHtml(p.audience || "Unisex")})`).join(" • ")}
       </p>
     </div>
   ` : "";
@@ -54,10 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".single-order-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const scent = JSON.parse(button.dataset.scent);
-
       sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
       sessionStorage.removeItem("mixBlend");
-
       window.location.href = "./order.html";
     });
   });
@@ -71,10 +67,7 @@ function prettyTags(tags) {
     "day","night","sporty","cozy","allyear"
   ];
 
-  return priority
-    .filter((t) => tags.includes(t))
-    .slice(0, 6)
-    .join(", ");
+  return priority.filter((t) => tags.includes(t)).slice(0, 6).join(", ");
 }
 
 function escapeHtml(str) {

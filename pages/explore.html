@@ -1,94 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore Scents | Build Your Perfect Scent</title>
 
-<title>Explore Scents | Build Your Perfect Scent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../styles/global.css">
-<link rel="stylesheet" href="../styles/explore.css">
-
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/explore.css">
 </head>
-
 <body>
+  <div id="navbar"></div>
 
-<div id="navbar"></div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Explore Our Scents</h2>
+          <p class="section-subtitle">
+            Browse our inspired fragrances. You can order a single scent or mix several together.
+          </p>
+        </div>
 
-<main>
+        <div class="family-cards" id="familyCards">
+          <button class="family-card is-active" type="button" data-family="all">
+            <span class="family-title">All</span>
+            <span class="family-desc">Browse the full collection</span>
+          </button>
 
-<section class="section">
+          <button class="family-card" type="button" data-family="fresh">
+            <span class="family-title">Fresh</span>
+            <span class="family-desc">Clean, aquatic, airy</span>
+          </button>
 
-<div class="container">
+          <button class="family-card" type="button" data-family="floral">
+            <span class="family-title">Floral</span>
+            <span class="family-desc">Soft, romantic, elegant</span>
+          </button>
 
-<div class="section-head">
+          <button class="family-card" type="button" data-family="sweet">
+            <span class="family-title">Sweet / Gourmand</span>
+            <span class="family-desc">Vanilla, cozy, dessert-like</span>
+          </button>
 
-<h2 class="section-title">Explore Our Scents</h2>
+          <button class="family-card" type="button" data-family="woody">
+            <span class="family-title">Woody</span>
+            <span class="family-desc">Deep, polished, structured</span>
+          </button>
 
-<p class="section-subtitle">
-Browse our inspired fragrances. You can order a single scent or mix several together.
-</p>
+          <button class="family-card" type="button" data-family="amber">
+            <span class="family-title">Amber / Warm</span>
+            <span class="family-desc">Radiant, sensual, rich</span>
+          </button>
+        </div>
 
-</div>
+        <div class="explore-controls">
+          <select id="audienceFilter">
+            <option value="all">All Audiences</option>
+            <option value="Men">Mainly for Men</option>
+            <option value="Women">Mainly for Women</option>
+            <option value="Unisex">Unisex</option>
+          </select>
 
+          <input type="text" id="searchInput" placeholder="Search scents..." />
+        </div>
 
-<div class="explore-controls">
+        <div id="scentsGrid" class="scents-grid"></div>
+      </div>
+    </section>
+  </main>
 
-<select id="familyFilter">
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Build Your Perfect Scent</p>
+      <p class="footer-note">Inspired fragrances tailored to your preferences.</p>
+    </div>
+  </footer>
 
-<option value="all">All Families</option>
-
-<option value="fresh">Fresh</option>
-
-<option value="floral">Floral</option>
-
-<option value="sweet">Sweet / Gourmand</option>
-
-<option value="woody">Woody</option>
-
-<option value="amber">Amber / Warm</option>
-
-</select>
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search scents..."
->
-
-</div>
-
-
-<div id="scentsGrid" class="scents-grid"></div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer class="site-footer">
-
-<div class="container footer-inner">
-
-<p>© <span id="year"></span> Build Your Perfect Scent</p>
-
-<p class="footer-note">
-Inspired fragrances tailored to your preferences.
-</p>
-
-</div>
-
-</footer>
-
-<script src="../script/main.js"></script>
-<script src="../script/explore.js"></script>
-
+  <script src="../script/main.js"></script>
+  <script src="../script/explore.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
     {
       "name": "Dior Sauvage",
       "tags": ["fresh", "woody", "spicy", "strong", "day", "night"],
+      "audience": "Men",
       "familyPrimary": "fresh-aromatic",
       "familySecondary": "woody-spicy",
       "notes": ["bergamot", "pepper", "ambroxan", "woods"],
@@ -16,6 +17,7 @@
     {
       "name": "Issey Miyake Women",
       "tags": ["fresh", "floral", "aquatic", "soft", "day"],
+      "audience": "Women",
       "familyPrimary": "aquatic-floral",
       "familySecondary": "fresh",
       "notes": ["lotus", "melon", "freesia", "water accord"],
@@ -29,6 +31,7 @@
     {
       "name": "Issey Miyake Men",
       "tags": ["fresh", "woody", "aquatic", "moderate", "day"],
+      "audience": "Men",
       "familyPrimary": "aquatic-woody",
       "familySecondary": "fresh-citrus",
       "notes": ["yuzu", "water accord", "spice", "woods"],
@@ -42,6 +45,7 @@
     {
       "name": "Parfums de Marly Valaya",
       "tags": ["floral", "musky", "fruity", "moderate", "day", "luxury"],
+      "audience": "Women",
       "familyPrimary": "musky-floral",
       "familySecondary": "fruity-clean",
       "notes": ["white peach", "orange blossom", "white florals", "musk"],
@@ -55,6 +59,7 @@
     {
       "name": "Ariana Grande Cloud",
       "tags": ["sweet", "gourmand", "musky", "moderate", "day", "cozy"],
+      "audience": "Women",
       "familyPrimary": "gourmand-musky",
       "familySecondary": "sweet-ambery",
       "notes": ["pear", "lavender", "coconut", "praline", "musk"],
@@ -68,6 +73,7 @@
     {
       "name": "Lanvin Éclat d’Arpège",
       "tags": ["floral", "fruity", "soft", "day"],
+      "audience": "Women",
       "familyPrimary": "floral-fruity",
       "familySecondary": "soft-musky",
       "notes": ["lilac", "peach", "green tea", "musk"],
@@ -81,6 +87,7 @@
     {
       "name": "Burberry Goddess",
       "tags": ["sweet", "vanilla", "warm", "moderate", "night", "cozy"],
+      "audience": "Women",
       "familyPrimary": "vanilla-gourmand",
       "familySecondary": "warm-aromatic",
       "notes": ["vanilla", "lavender", "warm woods"],
@@ -94,6 +101,7 @@
     {
       "name": "DKNY Be Delicious",
       "tags": ["fresh", "fruity", "moderate", "day", "spring"],
+      "audience": "Women",
       "familyPrimary": "fresh-fruity",
       "familySecondary": "green",
       "notes": ["green apple", "cucumber", "grapefruit", "soft woods"],
@@ -107,6 +115,7 @@
     {
       "name": "Baccarat Rouge 540",
       "tags": ["amber", "woody", "strong", "night", "luxury", "statement"],
+      "audience": "Unisex",
       "familyPrimary": "amber-woody",
       "familySecondary": "sweet-radiant",
       "notes": ["saffron", "jasmine", "amberwood", "cedar"],
@@ -120,6 +129,7 @@
     {
       "name": "YSL Black Opium",
       "tags": ["sweet", "vanilla", "gourmand", "strong", "night"],
+      "audience": "Women",
       "familyPrimary": "gourmand-vanilla",
       "familySecondary": "warm-floral",
       "notes": ["coffee", "vanilla", "white flowers", "patchouli"],
@@ -133,6 +143,7 @@
     {
       "name": "Jean Paul Gaultier Le Male",
       "tags": ["sweet", "aromatic", "strong", "night"],
+      "audience": "Men",
       "familyPrimary": "sweet-aromatic",
       "familySecondary": "warm-spicy",
       "notes": ["mint", "lavender", "vanilla", "amber"],
@@ -146,6 +157,7 @@
     {
       "name": "Bleu de Chanel",
       "tags": ["fresh", "woody", "aromatic", "moderate", "day", "allyear"],
+      "audience": "Men",
       "familyPrimary": "fresh-woody",
       "familySecondary": "aromatic-citrus",
       "notes": ["citrus", "ginger", "woods", "incense"],
@@ -159,6 +171,7 @@
     {
       "name": "Azzaro The Most Wanted",
       "tags": ["sweet", "spicy", "strong", "night"],
+      "audience": "Men",
       "familyPrimary": "sweet-spicy",
       "familySecondary": "ambery",
       "notes": ["cardamom", "toffee", "amber woods"],
@@ -172,6 +185,7 @@
     {
       "name": "Paco Rabanne Invictus",
       "tags": ["fresh", "aquatic", "strong", "day", "sporty"],
+      "audience": "Men",
       "familyPrimary": "fresh-aquatic",
       "familySecondary": "woody-sporty",
       "notes": ["marine accord", "grapefruit", "bay leaf", "woods"],
