@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mix Your Scents | Build Your Perfect Scent</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/mix.css">
+
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<main>
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2 class="section-title">Create Your Blend</h2>
+
+<p class="section-subtitle">
+Select 2–5 scents from your recommendations and we’ll help you blend them.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3 class="card-title">Step 1 — Choose scents to mix</h3>
+
+<p class="card-note">
+You can select between 2 and 5 scents.
+</p>
+
+<div id="mixPerfumeList" class="checklist"></div>
+
+<div class="mix-actions">
+
+<span id="mixHint">Select 2–5 scents to continue.</span>
+
+<button class="btn btn-primary" id="startMixQuizBtn" disabled>
+Start Mix Quiz
+</button>
+
+</div>
+
+</div>
+
+
+<div id="mixQuizArea" class="card" hidden>
+
+<h3 class="card-title">Step 2 — How should the blend feel?</h3>
+
+<div id="mixQuestionCard" class="question-card"></div>
+
+<div class="quiz-actions">
+
+<button class="btn btn-ghost" id="mixBackBtn">Back</button>
+
+<button class="btn btn-primary" id="mixNextBtn">Next</button>
+
+</div>
+
+</div>
+
+
+<div id="mixResultArea" class="card" hidden>
+
+<h3 class="card-title">Your Blend Recommendation</h3>
+
+<div id="mixResultCard"></div>
+
+<div class="quiz-actions">
+
+<a href="./order.html" class="btn btn-primary">
+Continue to Order
+</a>
+
+<button class="btn btn-ghost" id="restartMixBtn">
+Start Over
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+
+<div class="container footer-inner">
+
+<p>© <span id="year"></span> Build Your Perfect Scent</p>
+
+<p class="footer-note">
+Inspired fragrances tailored to your preferences.
+</p>
+
+</div>
+
+</footer>
+
+<script src="../script/main.js"></script>
+<script src="../script/mix.js"></script>
+
+</body>
+</html>
