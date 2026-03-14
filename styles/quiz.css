@@ -139,3 +139,52 @@
   color:var(--muted);
   font-size:14px;
 }
+/* Question transition animations */
+.question-card{
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.q-anim-enter{
+  opacity: 0;
+  transform: translateX(var(--qEnterX, 0px));
+}
+
+.q-anim-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.q-anim-exit{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.q-anim-exit-active{
+  opacity: 0;
+  transform: translateX(var(--qExitX, 0px));
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+/* Slight lift on results too */
+.result-card{
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:14px;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.result-card:hover{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.08);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .q-anim-enter-active,
+  .q-anim-exit-active,
+  .result-card{
+    transition: none !important;
+  }
+}

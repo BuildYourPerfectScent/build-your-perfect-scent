@@ -35,10 +35,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     bindEvents();
   } catch (error) {
     console.error("Failed to load quiz data:", error);
-    questionCard.innerHTML = `
-      <p style="color: white;">Failed to load quiz data. Check your JSON paths and run the site using Live Server or GitHub Pages.</p>
-    `;
     quizArea.hidden = false;
+    questionCard.innerHTML = `
+      <p style="color: white;">
+        Failed to load quiz data. Check your JSON paths and run the site using Live Server or GitHub Pages.
+      </p>
+    `;
   }
 });
 
@@ -55,8 +57,11 @@ function bindEvents() {
 
   backBtn.addEventListener("click", () => {
     if (currentIndex === 0) return;
-    currentIndex--;
-    renderQuestion();
+
+    animateQuestion("back", () => {
+      currentIndex--;
+      renderQuestion();
+    });
   });
 
   nextBtn.addEventListener("click", () => {
@@ -72,10 +77,14 @@ function bindEvents() {
     const total = quizzes[selectedLevel].length;
 
     if (currentIndex < total - 1) {
-      currentIndex++;
-      renderQuestion();
+      animateQuestion("next", () => {
+        currentIndex++;
+        renderQuestion();
+      });
     } else {
-      showResults();
+      animateQuestion("next", () => {
+        showResults();
+      });
     }
   });
 
@@ -142,7 +151,6 @@ function showResults() {
 
       selectedTags.forEach((tag) => {
         if (scent.tags.includes(tag)) score += 2;
-
         if (tag === "warm" && scent.tags.includes("amber")) score += 1;
         if (tag === "gourmand" && scent.tags.includes("sweet")) score += 1;
         if (tag === "statement" && scent.tags.includes("luxury")) score += 1;
@@ -185,6 +193,37 @@ function resetQuiz() {
   resultsGrid.innerHTML = "";
 
   levelButtons.forEach((btn) => btn.classList.remove("is-active"));
+}
+
+function animateQuestion(direction, updateFn) {
+  const enterX = direction === "next" ? "14px" : "-14px";
+  const exitX = direction === "next" ? "-14px" : "14px";
+
+  questionCard.style.setProperty("--qExitX", exitX);
+  questionCard.classList.remove("q-anim-enter", "q-anim-enter-active");
+  questionCard.classList.add("q-anim-exit");
+
+  void questionCard.offsetWidth;
+
+  questionCard.classList.add("q-anim-exit-active");
+
+  setTimeout(() => {
+    updateFn();
+
+    if (quizArea.hidden) return;
+
+    questionCard.style.setProperty("--qEnterX", enterX);
+    questionCard.classList.remove("q-anim-exit", "q-anim-exit-active");
+    questionCard.classList.add("q-anim-enter");
+
+    void questionCard.offsetWidth;
+
+    questionCard.classList.add("q-anim-enter-active");
+
+    setTimeout(() => {
+      questionCard.classList.remove("q-anim-enter", "q-anim-enter-active");
+    }, 240);
+  }, 190);
 }
 
 function prettyTags(tags) {
