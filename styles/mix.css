@@ -1,46 +1,70 @@
 .checklist{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:14px;
-
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:14px;
 }
 
-.check-item{
+.mix-choice{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.03);
+  cursor:pointer;
+  transition:background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
 
-display:flex;
-align-items:center;
-gap:10px;
-padding:10px 12px;
-border-radius:var(--radius-sm);
-border:1px solid var(--stroke);
-background:rgba(255,255,255,0.03);
+.mix-choice:hover{
+  background:rgba(255,255,255,0.06);
+  transform:translateY(-1px);
+}
 
+.mix-checkbox{
+  width:18px;
+  height:18px;
+  accent-color:#ffffff;
+  flex-shrink:0;
+}
+
+.mix-choice-text{
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  user-select:none;
+}
+
+.mix-choice:has(.mix-checkbox:checked){
+  background:rgba(255,255,255,0.10);
+  border-color:rgba(255,255,255,0.34);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.10) inset;
 }
 
 .mix-actions{
-
-display:flex;
-align-items:center;
-gap:10px;
-margin-top:16px;
-
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  flex-wrap:wrap;
 }
 
 #mixHint{
-
-color:var(--muted);
-font-size:14px;
-margin-right:auto;
-
+  color:var(--muted);
+  font-size:14px;
+  margin-right:auto;
 }
 
 .mix-result{
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:16px;
+}
 
-border:1px solid var(--stroke);
-background:rgba(255,255,255,0.05);
-border-radius:var(--radius);
-padding:16px;
-
+@media (max-width:900px){
+  .checklist{
+    grid-template-columns:1fr;
+  }
 }
