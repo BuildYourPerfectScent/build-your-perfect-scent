@@ -54,7 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".single-order-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const scent = JSON.parse(button.dataset.scent);
+
       sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
+      sessionStorage.removeItem("mixBlend");
+
       window.location.href = "./order.html";
     });
   });

@@ -36,20 +36,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function renderOrderSummary() {
+  const singleScentOrder = safeParse(sessionStorage.getItem("singleScentOrder"));
   const mixBlend = safeParse(sessionStorage.getItem("mixBlend"));
   const topResults = safeParse(sessionStorage.getItem("quizTopResults")) || [];
+
+  if (singleScentOrder && singleScentOrder.name) {
+    orderSummary.innerHTML = `
+      <div class="summary-block">
+        <h4>Single Scent Order</h4>
+        <p><strong>Selected Scent:</strong> ${escapeHtml(singleScentOrder.name)}</p>
+        <p><strong>Profile:</strong> ${escapeHtml(prettyTags(singleScentOrder.tags || []))}</p>
+        <p><strong>Match Score:</strong> ${escapeHtml(String(singleScentOrder.score || ""))}</p>
+      </div>
+    `;
+
+    orderTypeField.value = "Single Scent";
+    summaryOrderMode.value = "single";
+    summarySelection.value = singleScentOrder.name;
+    summaryQuizAnswers.value = "Main scent quiz completed";
+    summaryBlendVerdict.value = "";
+    summaryBlendStyle.value = prettyTags(singleScentOrder.tags || []);
+    summaryBlendRatios.value = "";
+    return;
+  }
 
   if (mixBlend && Array.isArray(mixBlend.scents) && mixBlend.scents.length) {
     const selectedScents = mixBlend.scents.join(", ");
     const quizAnswers = Array.isArray(mixBlend.answers) ? mixBlend.answers.join(" • ") : "N/A";
 
-    const verdict =
-      mixBlend.analysis?.verdictLabel ||
-      "Custom Blend";
-
-    const style =
-      mixBlend.analysis?.styleLine ||
-      "Custom blend";
+    const verdict = mixBlend.analysis?.verdictLabel || "Custom Blend";
+    const style = mixBlend.analysis?.styleLine || "Custom blend";
 
     const ratios = Array.isArray(mixBlend.analysis?.blendItems)
       ? mixBlend.analysis.blendItems.map((item) => `${item.scent} — ${item.pct}%`).join("\n")
@@ -69,10 +85,7 @@ function renderOrderSummary() {
       <div class="summary-block">
         <h4>Recommended Blend</h4>
         <ul class="summary-list">
-          ${ratios
-            .split("\n")
-            .map((line) => `<li>${escapeHtml(line)}</li>`)
-            .join("")}
+          ${ratios.split("\n").map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
         </ul>
       </div>
     `;
@@ -131,37 +144,37 @@ function bindOrderForm() {
       return;
     }
 
+    if (!window.emailjs) {
+      setStatus("Email service failed to load.", false);
+      return;
+    }
+
     submitOrderBtn.disabled = true;
     setStatus("Sending order...", true);
 
-    const payload = {
-      full_name: document.getElementById("fullName").value.trim(),
-      instagram: document.getElementById("instagram").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      address: document.getElementById("address").value.trim(),
-      order_type: document.getElementById("orderType").value,
-      bottle_size: document.getElementById("bottleSize").value,
-      quantity: document.getElementById("quantity").value,
-      notes: document.getElementById("notes").value.trim(),
-
-      summary_order_mode: summaryOrderMode.value,
-      summary_selection: summarySelection.value,
-      summary_quiz_answers: summaryQuizAnswers.value,
-      summary_blend_verdict: summaryBlendVerdict.value,
-      summary_blend_style: summaryBlendStyle.value,
-      summary_blend_ratios: summaryBlendRatios.value
-    };
-
     try {
-      await emailjs.send(
+      await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        payload
+        orderForm
       );
 
-      showSuccessScreen(payload);
+      showSuccessScreen({
+        full_name: document.getElementById("fullName").value.trim(),
+        instagram: document.getElementById("instagram").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        order_type: document.getElementById("orderType").value,
+        bottle_size: document.getElementById("bottleSize").value,
+        quantity: document.getElementById("quantity").value,
+        summary_selection: summarySelection.value,
+        summary_blend_ratios: summaryBlendRatios.value
+      });
+
       orderForm.reset();
+
+      sessionStorage.removeItem("singleScentOrder");
+      sessionStorage.removeItem("mixBlend");
 
       summaryOrderMode.value = "";
       summarySelection.value = "";
@@ -171,7 +184,7 @@ function bindOrderForm() {
       summaryBlendRatios.value = "";
     } catch (error) {
       console.error("EmailJS send failed:", error);
-      setStatus("Failed to send order. Please try again.", false);
+      setStatus(`Failed to send order: ${error?.text || error?.message || "Please try again."}`, false);
     } finally {
       submitOrderBtn.disabled = false;
     }
@@ -214,22 +227,10 @@ function setStatus(message, neutral = false) {
 
 function prettyTags(tags) {
   const priority = [
-    "fresh",
-    "sweet",
-    "floral",
-    "woody",
-    "amber",
-    "vanilla",
-    "aquatic",
-    "musky",
-    "spicy",
-    "luxury",
-    "statement",
-    "day",
-    "night",
-    "sporty",
-    "cozy",
-    "allyear"
+    "fresh","sweet","floral","woody",
+    "amber","vanilla","aquatic","musky",
+    "spicy","luxury","statement",
+    "day","night","sporty","cozy","allyear"
   ];
 
   return priority.filter((tag) => tags.includes(tag)).slice(0, 6).join(", ");
