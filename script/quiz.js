@@ -160,26 +160,22 @@ function showResults() {
     })
     .sort((a, b) => b.score - a.score);
 
-  const topResults = scored.slice(0, 3);
-  const moreResults = scored.slice(3, 6);
+  const topResults = scored.slice(0,3);
+  onst moreResults = scored.slice(3,6);
 
-  resultsGrid.innerHTML = topResults.map((scent, index) => `
-    <div class="result-card">
-      <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
-      <p class="result-meta">
-        Matches: <strong>${scent.score}</strong> • Profile: ${escapeHtml(prettyTags(scent.tags))}
-      </p>
-    </div>
-  `).join("");
+// Save results for results page
+sessionStorage.setItem(
+  "quizTopResults",
+  JSON.stringify(topResults)
+);
 
-  if (moreResults.length) {
-    resultsGrid.innerHTML += `
-      <div class="result-card" style="grid-column: 1 / -1;">
-        <h4 class="result-name">More options to try</h4>
-        <p class="result-meta">${moreResults.map((item) => escapeHtml(item.name)).join(" • ")}</p>
-      </div>
-    `;
-  }
+sessionStorage.setItem(
+  "quizMoreResults",
+  JSON.stringify(moreResults)
+);
+
+// Redirect to results page
+window.location.href = "../pages/results.html";
 }
 
 function resetQuiz() {
