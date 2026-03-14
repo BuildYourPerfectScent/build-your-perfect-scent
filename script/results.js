@@ -16,44 +16,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mixPool = [...topResults, ...moreResults];
   sessionStorage.setItem("mixPool", JSON.stringify(mixPool));
+  sessionStorage.removeItem("singleScentOrder");
 
-  const topMarkup = topResults.map((scent, index) => `
-    <div class="result-card">
-      <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
-      <p class="result-meta">
-        Matches: <strong>${scent.score}</strong><br>
-        Profile: ${escapeHtml(prettyTags(scent.tags || []))}
-      </p>
-      <span class="result-audience">${escapeHtml(scent.audience || "Unisex")}</span>
+  const topMarkup = topResults
+    .map(
+      (scent, index) => `
+        <div class="result-card">
+          <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
+          <p class="result-meta">
+            Matches: <strong>${scent.score}</strong><br>
+            Profile: ${escapeHtml(prettyTags(scent.tags || []))}
+          </p>
+          <span class="result-audience">${escapeHtml(scent.audience || "Unisex")}</span>
 
-      <div class="result-actions">
-        <button
-          class="btn btn-primary single-order-btn"
-          type="button"
-          data-scent='${escapeAttr(JSON.stringify(scent))}'
-        >
-          Order This Scent
-        </button>
+          <div class="result-actions">
+            <button
+              class="btn btn-primary single-order-btn"
+              type="button"
+              data-scent='${escapeAttr(JSON.stringify(scent))}'
+            >
+              Order This Scent
+            </button>
+          </div>
+        </div>
+      `
+    )
+    .join("");
+
+  const moreMarkup = moreResults.length
+    ? `
+      <div class="result-card" style="grid-column: 1 / -1;">
+        <h4 class="result-name">Additional Recommendations</h4>
+        <p class="result-meta">
+          ${moreResults
+            .map((p) => `${escapeHtml(p.name)} (${escapeHtml(p.audience || "Unisex")})`)
+            .join(" • ")}
+        </p>
       </div>
-    </div>
-  `).join("");
-
-  const moreMarkup = moreResults.length ? `
-    <div class="result-card" style="grid-column: 1 / -1;">
-      <h4 class="result-name">Additional Recommendations</h4>
-      <p class="result-meta">
-        ${moreResults.map((p) => `${escapeHtml(p.name)} (${escapeHtml(p.audience || "Unisex")})`).join(" • ")}
-      </p>
-    </div>
-  ` : "";
+    `
+    : "";
 
   resultsGrid.innerHTML = topMarkup + moreMarkup;
 
   document.querySelectorAll(".single-order-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const scent = JSON.parse(button.dataset.scent);
+
       sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
       sessionStorage.removeItem("mixBlend");
+
       window.location.href = "./order.html";
     });
   });
@@ -61,10 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function prettyTags(tags) {
   const priority = [
-    "fresh","sweet","floral","woody",
-    "amber","vanilla","aquatic","musky",
-    "spicy","luxury","statement",
-    "day","night","sporty","cozy","allyear"
+    "fresh",
+    "sweet",
+    "floral",
+    "woody",
+    "amber",
+    "vanilla",
+    "aquatic",
+    "musky",
+    "spicy",
+    "luxury",
+    "statement",
+    "day",
+    "night",
+    "sporty",
+    "cozy",
+    "allyear"
   ];
 
   return priority.filter((t) => tags.includes(t)).slice(0, 6).join(", ");

@@ -40,30 +40,11 @@ function renderOrderSummary() {
   const mixBlend = safeParse(sessionStorage.getItem("mixBlend"));
   const topResults = safeParse(sessionStorage.getItem("quizTopResults")) || [];
 
-  if (singleScentOrder && singleScentOrder.name) {
-    orderSummary.innerHTML = `
-      <div class="summary-block">
-        <h4>Single Scent Order</h4>
-        <p><strong>Selected Scent:</strong> ${escapeHtml(singleScentOrder.name)}</p>
-        <p><strong>Profile:</strong> ${escapeHtml(prettyTags(singleScentOrder.tags || []))}</p>
-        <p><strong>Match Score:</strong> ${escapeHtml(String(singleScentOrder.score || ""))}</p>
-      </div>
-    `;
-
-    orderTypeField.value = "Single Scent";
-    summaryOrderMode.value = "single";
-    summarySelection.value = singleScentOrder.name;
-    summaryQuizAnswers.value = "Main scent quiz completed";
-    summaryBlendVerdict.value = "";
-    summaryBlendStyle.value = prettyTags(singleScentOrder.tags || []);
-    summaryBlendRatios.value = "";
-    return;
-  }
+  resetSummaryFields();
 
   if (mixBlend && Array.isArray(mixBlend.scents) && mixBlend.scents.length) {
     const selectedScents = mixBlend.scents.join(", ");
     const quizAnswers = Array.isArray(mixBlend.answers) ? mixBlend.answers.join(" • ") : "N/A";
-
     const verdict = mixBlend.analysis?.verdictLabel || "Custom Blend";
     const style = mixBlend.analysis?.styleLine || "Custom blend";
 
@@ -85,7 +66,10 @@ function renderOrderSummary() {
       <div class="summary-block">
         <h4>Recommended Blend</h4>
         <ul class="summary-list">
-          ${ratios.split("\n").map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
+          ${ratios
+            .split("\n")
+            .map((line) => `<li>${escapeHtml(line)}</li>`)
+            .join("")}
         </ul>
       </div>
     `;
@@ -97,6 +81,26 @@ function renderOrderSummary() {
     summaryBlendVerdict.value = verdict;
     summaryBlendStyle.value = style;
     summaryBlendRatios.value = ratios;
+    return;
+  }
+
+  if (singleScentOrder && singleScentOrder.name) {
+    orderSummary.innerHTML = `
+      <div class="summary-block">
+        <h4>Single Scent Order</h4>
+        <p><strong>Selected Scent:</strong> ${escapeHtml(singleScentOrder.name)}</p>
+        <p><strong>Profile:</strong> ${escapeHtml(prettyTags(singleScentOrder.tags || []))}</p>
+        <p><strong>Match Score:</strong> ${escapeHtml(String(singleScentOrder.score || ""))}</p>
+      </div>
+    `;
+
+    orderTypeField.value = "Single Scent";
+    summaryOrderMode.value = "single";
+    summarySelection.value = singleScentOrder.name;
+    summaryQuizAnswers.value = "Direct single scent selection";
+    summaryBlendVerdict.value = "";
+    summaryBlendStyle.value = prettyTags(singleScentOrder.tags || []);
+    summaryBlendRatios.value = "";
     return;
   }
 
@@ -128,6 +132,7 @@ function renderOrderSummary() {
     </p>
   `;
 
+  orderTypeField.value = "";
   summaryOrderMode.value = "manual";
 }
 
@@ -153,11 +158,7 @@ function bindOrderForm() {
     setStatus("Sending order...", true);
 
     try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        orderForm
-      );
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, orderForm);
 
       showSuccessScreen({
         full_name: document.getElementById("fullName").value.trim(),
@@ -176,19 +177,13 @@ function bindOrderForm() {
       sessionStorage.removeItem("singleScentOrder");
       sessionStorage.removeItem("mixBlend");
 
-      summaryOrderMode.value = "";
-      summarySelection.value = "";
-      summaryQuizAnswers.value = "";
-      summaryBlendVerdict.value = "";
-      summaryBlendStyle.value = "";
-      summaryBlendRatios.value = "";
-    }catch (error) {
-  console.error("EmailJS send failed:", error);
-  setStatus(
-    `Failed to send order: ${error?.text || error?.message || JSON.stringify(error)}`,
-    false
-  );
-}
+      resetSummaryFields();
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      setStatus(
+        `Failed to send order: ${error?.text || error?.message || JSON.stringify(error)}`,
+        false
+      );
     } finally {
       submitOrderBtn.disabled = false;
     }
@@ -220,6 +215,15 @@ function showSuccessScreen(payload) {
   `;
 }
 
+function resetSummaryFields() {
+  summaryOrderMode.value = "";
+  summarySelection.value = "";
+  summaryQuizAnswers.value = "";
+  summaryBlendVerdict.value = "";
+  summaryBlendStyle.value = "";
+  summaryBlendRatios.value = "";
+}
+
 function setStatus(message, neutral = false) {
   orderStatus.textContent = message;
   orderStatus.className = "order-status";
@@ -231,10 +235,22 @@ function setStatus(message, neutral = false) {
 
 function prettyTags(tags) {
   const priority = [
-    "fresh","sweet","floral","woody",
-    "amber","vanilla","aquatic","musky",
-    "spicy","luxury","statement",
-    "day","night","sporty","cozy","allyear"
+    "fresh",
+    "sweet",
+    "floral",
+    "woody",
+    "amber",
+    "vanilla",
+    "aquatic",
+    "musky",
+    "spicy",
+    "luxury",
+    "statement",
+    "day",
+    "night",
+    "sporty",
+    "cozy",
+    "allyear"
   ];
 
   return priority.filter((tag) => tags.includes(tag)).slice(0, 6).join(", ");

@@ -97,6 +97,8 @@ function renderMixChoices() {
   mixPerfumeList.innerHTML = mixPool
     .map((p, i) => {
       const family = [p.familyPrimary, p.familySecondary].filter(Boolean).join(" • ");
+      const isChecked = selectedScents.includes(p.name) ? "checked" : "";
+
       return `
         <label class="mix-choice" for="mix_${i}">
           <input
@@ -104,6 +106,7 @@ function renderMixChoices() {
             class="mix-checkbox"
             id="mix_${i}"
             data-name="${escapeHtml(p.name)}"
+            ${isChecked}
           >
           <span class="mix-choice-text-wrap">
             <span class="mix-choice-text">${escapeHtml(p.name)}</span>
@@ -124,7 +127,10 @@ function renderMixChoices() {
           alert("You can mix up to 5 scents only.");
           return;
         }
-        selectedScents.push(name);
+
+        if (!selectedScents.includes(name)) {
+          selectedScents.push(name);
+        }
       } else {
         selectedScents = selectedScents.filter((s) => s !== name);
       }
@@ -132,6 +138,8 @@ function renderMixChoices() {
       updateMixState();
     });
   });
+
+  updateMixState();
 }
 
 function updateMixState() {
@@ -152,6 +160,11 @@ function updateMixState() {
 
 function bindEvents() {
   startMixQuizBtn.addEventListener("click", () => {
+    if (selectedScents.length < 2) {
+      alert("Please select at least 2 scents.");
+      return;
+    }
+
     mixQuizArea.hidden = false;
     mixResultArea.hidden = true;
     mixIndex = 0;
@@ -188,6 +201,7 @@ function bindEvents() {
   });
 
   restartMixBtn.addEventListener("click", () => {
+    sessionStorage.removeItem("mixBlend");
     window.location.reload();
   });
 }
@@ -282,6 +296,8 @@ function showMixResult() {
     </div>
   `;
 
+  sessionStorage.removeItem("singleScentOrder");
+
   sessionStorage.setItem(
     "mixBlend",
     JSON.stringify({
@@ -307,16 +323,11 @@ function analyzeBlend(scents, profile) {
   const warnings = [];
   let score = 0;
 
-  const nameSet = new Set(scents.map((s) => s.name));
-
-  const pairResults = [];
-
   for (let i = 0; i < scents.length; i++) {
     for (let j = i + 1; j < scents.length; j++) {
       const a = scents[i];
       const b = scents[j];
       const pair = analyzePair(a, b);
-      pairResults.push(pair);
       score += pair.score;
       reasons.push(...pair.reasons);
       warnings.push(...pair.warnings);
@@ -487,7 +498,6 @@ function assignRoles(scents, profile) {
 
     const canBase = (scent.worksAs || []).includes("base");
     const canSupport = (scent.worksAs || []).includes("support");
-    const canAccent = (scent.worksAs || []).includes("accent");
 
     if (profile.goal === "fresh-clean") {
       roleScore += Number(scent.freshness || 0) * 2;
@@ -516,7 +526,10 @@ function assignRoles(scents, profile) {
 
     if (profile.wear === "day" && (scent.tags || []).includes("day")) roleScore += 1;
     if (profile.wear === "night" && (scent.tags || []).includes("night")) roleScore += 1;
-    if (profile.wear === "occasion" && ((scent.tags || []).includes("luxury") || (scent.tags || []).includes("statement"))) {
+    if (
+      profile.wear === "occasion" &&
+      ((scent.tags || []).includes("luxury") || (scent.tags || []).includes("statement"))
+    ) {
       roleScore += 1;
     }
 
@@ -609,13 +622,15 @@ function normalizePercentages(items) {
   total = items.reduce((sum, item) => sum + item.pct, 0);
 
   while (total > 100) {
-    const idx = items.findIndex((item) => item.pct === Math.max(...items.map((x) => x.pct)));
+    const maxPct = Math.max(...items.map((x) => x.pct));
+    const idx = items.findIndex((item) => item.pct === maxPct);
     items[idx].pct -= 1;
     total -= 1;
   }
 
   while (total < 100) {
-    const idx = items.findIndex((item) => item.pct === Math.max(...items.map((x) => x.pct)));
+    const maxPct = Math.max(...items.map((x) => x.pct));
+    const idx = items.findIndex((item) => item.pct === maxPct);
     items[idx].pct += 1;
     total += 1;
   }
