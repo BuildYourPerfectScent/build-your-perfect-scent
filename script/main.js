@@ -2,13 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const navbarTarget = document.getElementById("navbar");
 
   if (navbarTarget) {
-    const isInPagesFolder = window.location.pathname.includes("/pages/");
-    const navbarPath = isInPagesFolder
-      ? "../components/navbar.html"
-      : "./components/navbar.html";
-
     try {
-      const response = await fetch(navbarPath);
+      const response = await fetch("/build-your-perfect-scent/components/navbar.html");
       const html = await response.text();
       navbarTarget.innerHTML = html;
     } catch (error) {

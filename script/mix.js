@@ -63,10 +63,15 @@ async function loadMixPool() {
     }
   }
 
-  const response = await fetch("../data/scents.json");
-  const data = await response.json();
-  mixPool = data.scents || [];
-  mixHint.textContent = "Choose 2–5 scents from all available scents.";
+  try {
+    const response = await fetch("../data/scents.json");
+    const data = await response.json();
+    mixPool = data.scents || [];
+    mixHint.textContent = "Choose 2–5 scents from all available scents.";
+  } catch (error) {
+    console.error("Failed to load scents:", error);
+    mixHint.textContent = "Failed to load scents.";
+  }
 }
 
 function renderMixChoices() {
@@ -169,8 +174,7 @@ function renderMixQuestion() {
   const q = MIX_QUIZ[mixIndex];
   const saved = mixAnswers[mixIndex];
 
-  mixNextBtn.textContent =
-    mixIndex === MIX_QUIZ.length - 1 ? "See Blend" : "Next";
+  mixNextBtn.textContent = mixIndex === MIX_QUIZ.length - 1 ? "See Blend" : "Next";
 
   mixQuestionCard.innerHTML = `
     <h4 class="q-title">${escapeHtml(q.text)}</h4>
@@ -195,7 +199,7 @@ function showMixResult() {
   mixResultArea.hidden = false;
 
   const baseRatio = Math.floor(100 / selectedScents.length);
-  let remaining = 100 - (baseRatio * selectedScents.length);
+  let remaining = 100 - baseRatio * selectedScents.length;
 
   const blendItems = selectedScents.map((scent, index) => {
     const pct = baseRatio + (index === 0 ? remaining : 0);
@@ -212,7 +216,7 @@ function showMixResult() {
       <p><strong>Your Blend:</strong></p>
 
       <div class="mix-bars">
-        ${blendItems.map(item => `
+        ${blendItems.map((item) => `
           <div class="mix-bar">
             <div class="mix-bar-top">
               <span>${escapeHtml(item.scent)}</span>
