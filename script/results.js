@@ -1,7 +1,6 @@
 const resultsGrid = document.getElementById("resultsGrid");
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const topResults =
     JSON.parse(sessionStorage.getItem("quizTopResults")) || [];
 
@@ -9,52 +8,59 @@ document.addEventListener("DOMContentLoaded", () => {
     JSON.parse(sessionStorage.getItem("quizMoreResults")) || [];
 
   if (!topResults.length) {
-
     resultsGrid.innerHTML = `
       <div class="result-card" style="grid-column: 1 / -1;">
         <h4 class="result-name">No quiz results found</h4>
         <p class="result-meta">Please take the scent quiz first.</p>
       </div>
     `;
-
     return;
   }
 
-  // Combine all results for mixing later
   const mixPool = [...topResults, ...moreResults];
   sessionStorage.setItem("mixPool", JSON.stringify(mixPool));
 
-
-  // Render top matches
   const topMarkup = topResults.map((scent, index) => `
-      <div class="result-card">
-        <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
-        <p class="result-meta">
-          Matches: <strong>${scent.score}</strong><br>
-          Profile: ${prettyTags(scent.tags)}
-        </p>
+    <div class="result-card">
+      <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
+      <p class="result-meta">
+        Matches: <strong>${scent.score}</strong><br>
+        Profile: ${escapeHtml(prettyTags(scent.tags))}
+      </p>
+
+      <div class="result-actions">
+        <button
+          class="btn btn-primary single-order-btn"
+          type="button"
+          data-scent='${escapeAttr(JSON.stringify(scent))}'
+        >
+          Order This Scent
+        </button>
       </div>
+    </div>
   `).join("");
 
-
-  // Render additional recommendations
   const moreMarkup = moreResults.length ? `
-      <div class="result-card" style="grid-column: 1 / -1;">
-        <h4 class="result-name">Additional Recommendations</h4>
-        <p class="result-meta">
-          ${moreResults.map(p => escapeHtml(p.name)).join(" • ")}
-        </p>
-      </div>
+    <div class="result-card" style="grid-column: 1 / -1;">
+      <h4 class="result-name">Additional Recommendations</h4>
+      <p class="result-meta">
+        ${moreResults.map((p) => escapeHtml(p.name)).join(" • ")}
+      </p>
+    </div>
   ` : "";
-
 
   resultsGrid.innerHTML = topMarkup + moreMarkup;
 
+  document.querySelectorAll(".single-order-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const scent = JSON.parse(button.dataset.scent);
+      sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
+      window.location.href = "./order.html";
+    });
+  });
 });
 
-
-function prettyTags(tags){
-
+function prettyTags(tags) {
   const priority = [
     "fresh","sweet","floral","woody",
     "amber","vanilla","aquatic","musky",
@@ -63,20 +69,20 @@ function prettyTags(tags){
   ];
 
   return priority
-    .filter(t => tags.includes(t))
-    .slice(0,6)
+    .filter((t) => tags.includes(t))
+    .slice(0, 6)
     .join(", ");
-
 }
 
-
-function escapeHtml(str){
-
+function escapeHtml(str) {
   return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
+function escapeAttr(str) {
+  return escapeHtml(str).replaceAll("\n", " ");
 }
