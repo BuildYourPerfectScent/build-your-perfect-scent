@@ -161,7 +161,7 @@ function showResults() {
     .sort((a, b) => b.score - a.score);
 
   const topResults = scored.slice(0,3);
-  onst moreResults = scored.slice(3,6);
+  const moreResults = scored.slice(3,6);
 
 // Save results for results page
 sessionStorage.setItem(
