@@ -1,0 +1,80 @@
+.explore-controls{
+
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:16px;
+
+}
+
+.explore-controls select,
+.explore-controls input{
+
+padding:10px 12px;
+border-radius:var(--radius-sm);
+border:1px solid var(--stroke);
+background:rgba(255,255,255,0.05);
+color:var(--text);
+
+}
+
+.scents-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+margin-top:20px;
+
+}
+
+.scent-card{
+
+border:1px solid var(--stroke);
+background:rgba(255,255,255,0.05);
+border-radius:var(--radius);
+padding:16px;
+transition:transform .16s ease, background .16s ease;
+
+}
+
+.scent-card:hover{
+
+transform:translateY(-3px);
+background:rgba(255,255,255,0.08);
+
+}
+
+.scent-name{
+
+font-family:var(--serif);
+font-size:22px;
+font-weight:700;
+margin-bottom:6px;
+
+}
+
+.scent-meta{
+
+color:var(--muted);
+font-size:14px;
+margin-bottom:12px;
+
+}
+
+.scent-actions{
+
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+
+}
+
+@media (max-width:900px){
+
+.scents-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

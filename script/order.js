@@ -182,9 +182,13 @@ function bindOrderForm() {
       summaryBlendVerdict.value = "";
       summaryBlendStyle.value = "";
       summaryBlendRatios.value = "";
-    } catch (error) {
-      console.error("EmailJS send failed:", error);
-      setStatus(`Failed to send order: ${error?.text || error?.message || "Please try again."}`, false);
+    }catch (error) {
+  console.error("EmailJS send failed:", error);
+  setStatus(
+    `Failed to send order: ${error?.text || error?.message || JSON.stringify(error)}`,
+    false
+  );
+}
     } finally {
       submitOrderBtn.disabled = false;
     }
