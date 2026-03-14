@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order | Build Your Perfect Scent</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/order.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Place Your Order</h2>
+          <p class="section-subtitle">
+            Fill in your details below and we’ll contact you regarding payment and delivery.
+          </p>
+        </div>
+
+        <div class="order-layout">
+          <div class="card">
+            <h3 class="card-title">Order Summary</h3>
+            <p class="card-note">Your selected scent or custom blend will appear here.</p>
+
+            <div id="orderSummary" class="order-summary">
+              <p class="empty-summary">No scent selection found yet. You can still place an order manually below.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Customer Information</h3>
+            <p class="card-note">Please provide complete details for messaging and delivery.</p>
+
+            <form id="orderForm" class="order-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input id="fullName" name="fullName" type="text" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="instagram">Instagram Account</label>
+                  <input id="instagram" name="instagram" type="text" placeholder="@yourhandle" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input id="email" name="email" type="email" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input id="phone" name="phone" type="tel" required />
+                </div>
+
+                <div class="form-group form-group-full">
+                  <label for="address">Full Address</label>
+                  <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="orderType">Order Type</label>
+                  <select id="orderType" name="orderType" required>
+                    <option value="">Select order type</option>
+                    <option value="Single Scent">Single Scent</option>
+                    <option value="Custom Blend">Custom Blend</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="bottleSize">Bottle Size</label>
+                  <select id="bottleSize" name="bottleSize" required>
+                    <option value="">Select bottle size</option>
+                    <option value="10 ml">10 ml Tube</option>
+                    <option value="30 ml">30 ml Square</option>
+                    <option value="50 ml">50 ml Square</option>
+                    <option value="100 ml">100 ml Square</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input id="quantity" name="quantity" type="number" min="1" value="1" required />
+                </div>
+
+                <div class="form-group form-group-full">
+                  <label for="notes">Additional Notes</label>
+                  <textarea id="notes" name="notes" rows="4" placeholder="Delivery notes, preferred contact time, special requests, etc."></textarea>
+                </div>
+              </div>
+
+              <input type="hidden" id="summaryOrderMode" name="summaryOrderMode" />
+              <input type="hidden" id="summarySelection" name="summarySelection" />
+              <input type="hidden" id="summaryQuizAnswers" name="summaryQuizAnswers" />
+              <input type="hidden" id="summaryBlendVerdict" name="summaryBlendVerdict" />
+              <input type="hidden" id="summaryBlendStyle" name="summaryBlendStyle" />
+              <input type="hidden" id="summaryBlendRatios" name="summaryBlendRatios" />
+
+              <div class="submit-wrap">
+                <button type="submit" class="btn btn-primary" id="submitOrderBtn">Send Order</button>
+                <p id="orderStatus" class="order-status"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Build Your Perfect Scent</p>
+      <p class="footer-note">Inspired fragrances tailored to your preferences.</p>
+    </div>
+  </footer>
+
+  <script src="../script/main.js"></script>
+  <script src="../script/order.js"></script>
+</body>
+</html>
