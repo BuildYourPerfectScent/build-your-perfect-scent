@@ -93,9 +93,7 @@ function startQuiz(level) {
   currentIndex = 0;
   answers = new Array(quizzes[level].length).fill(null);
 
-  resultsArea.hidden = true;
   quizArea.hidden = false;
-
   renderQuestion();
 }
 
@@ -133,7 +131,6 @@ function renderQuestion() {
 }
 
 function showResults() {
-
   const selectedTags = answers.flat();
 
   const scored = scents
@@ -142,39 +139,23 @@ function showResults() {
 
       selectedTags.forEach((tag) => {
         if (scent.tags.includes(tag)) score += 2;
+        if (tag === "warm" && scent.tags.includes("amber")) score += 1;
+        if (tag === "gourmand" && scent.tags.includes("sweet")) score += 1;
+        if (tag === "statement" && scent.tags.includes("luxury")) score += 1;
       });
 
       return { ...scent, score };
     })
     .sort((a, b) => b.score - a.score);
 
-  const topResults = scored.slice(0,3);
-  const moreResults = scored.slice(3,6);
+  const topResults = scored.slice(0, 3);
+  const moreResults = scored.slice(3, 6);
 
-  sessionStorage.setItem(
-    "quizTopResults",
-    JSON.stringify(topResults)
-  );
-
-  sessionStorage.setItem(
-    "quizMoreResults",
-    JSON.stringify(moreResults)
-  );
+  sessionStorage.setItem("quizTopResults", JSON.stringify(topResults));
+  sessionStorage.setItem("quizMoreResults", JSON.stringify(moreResults));
+  sessionStorage.setItem("quizSelectedTags", JSON.stringify(selectedTags));
 
   window.location.href = "../pages/results.html";
-}
-
-function resetQuiz() {
-  selectedLevel = null;
-  currentIndex = 0;
-  answers = [];
-
-  quizArea.hidden = true;
-  resultsArea.hidden = true;
-  questionCard.innerHTML = "";
-  resultsGrid.innerHTML = "";
-
-  levelButtons.forEach((btn) => btn.classList.remove("is-active"));
 }
 
 function animateQuestion(direction, updateFn) {
@@ -206,29 +187,6 @@ function animateQuestion(direction, updateFn) {
       questionCard.classList.remove("q-anim-enter", "q-anim-enter-active");
     }, 240);
   }, 190);
-}
-
-function prettyTags(tags) {
-  const priority = [
-    "fresh",
-    "sweet",
-    "floral",
-    "woody",
-    "amber",
-    "vanilla",
-    "aquatic",
-    "musky",
-    "spicy",
-    "luxury",
-    "statement",
-    "day",
-    "night",
-    "sporty",
-    "cozy",
-    "allyear"
-  ];
-
-  return priority.filter((tag) => tags.includes(tag)).slice(0, 6).join(", ");
 }
 
 function escapeHtml(str) {
