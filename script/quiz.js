@@ -10,14 +10,11 @@ let answers = [];
 
 const levelButtons = $$(".level-btn");
 const quizArea = $("#quizArea");
-const resultsArea = $("#resultsArea");
 const questionCard = $("#questionCard");
 const progressText = $("#progressText");
 const progressFill = $("#progressFill");
 const backBtn = $("#backBtn");
 const nextBtn = $("#nextBtn");
-const restartBtn = $("#restartBtn");
-const resultsGrid = $("#resultsGrid");
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -86,10 +83,6 @@ function bindEvents() {
         showResults();
       });
     }
-  });
-
-  restartBtn.addEventListener("click", () => {
-    resetQuiz();
   });
 }
 
