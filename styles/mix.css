@@ -63,6 +63,85 @@
   padding:16px;
 }
 
+.mix-result p{
+  margin:0 0 10px;
+}
+
+.mix-bars{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.mix-bar{
+  display:grid;
+  gap:6px;
+}
+
+.mix-bar-top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:14px;
+  color:var(--text);
+  font-weight:600;
+}
+
+.mix-track{
+  height:10px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.03);
+  overflow:hidden;
+}
+
+.mix-fill{
+  height:100%;
+  background:rgba(255,255,255,0.38);
+}
+
+.question-card{
+  margin-top:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.07);
+  border-radius:var(--radius);
+  padding:18px;
+}
+
+.q-title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  display:flex;
+  gap:10px;
+  padding:12px;
+  border:1px solid var(--stroke);
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,0.04);
+  cursor:pointer;
+}
+
+.option:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+.quiz-actions{
+  margin-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
 @media (max-width:900px){
   .checklist{
     grid-template-columns:1fr;
