@@ -2,59 +2,185 @@
   "scents": [
     {
       "name": "Dior Sauvage",
-      "tags": ["fresh", "woody", "spicy", "strong", "day", "night"]
+      "tags": ["fresh", "woody", "spicy", "strong", "day", "night"],
+      "familyPrimary": "fresh-aromatic",
+      "familySecondary": "woody-spicy",
+      "notes": ["bergamot", "pepper", "ambroxan", "woods"],
+      "intensity": 4,
+      "sweetness": 1,
+      "freshness": 4,
+      "worksAs": ["base", "support"],
+      "pairings": ["Bleu de Chanel", "Paco Rabanne Invictus", "Baccarat Rouge 540"],
+      "avoidWith": ["YSL Black Opium"]
     },
     {
       "name": "Issey Miyake Women",
-      "tags": ["fresh", "floral", "aquatic", "soft", "day"]
+      "tags": ["fresh", "floral", "aquatic", "soft", "day"],
+      "familyPrimary": "aquatic-floral",
+      "familySecondary": "fresh",
+      "notes": ["lotus", "melon", "freesia", "water accord"],
+      "intensity": 2,
+      "sweetness": 1,
+      "freshness": 5,
+      "worksAs": ["base", "support", "accent"],
+      "pairings": ["Lanvin Éclat d’Arpège", "DKNY Be Delicious", "Parfums de Marly Valaya"],
+      "avoidWith": ["YSL Black Opium", "Azzaro The Most Wanted"]
     },
     {
       "name": "Issey Miyake Men",
-      "tags": ["fresh", "woody", "aquatic", "moderate", "day"]
+      "tags": ["fresh", "woody", "aquatic", "moderate", "day"],
+      "familyPrimary": "aquatic-woody",
+      "familySecondary": "fresh-citrus",
+      "notes": ["yuzu", "water accord", "spice", "woods"],
+      "intensity": 3,
+      "sweetness": 1,
+      "freshness": 5,
+      "worksAs": ["base", "support"],
+      "pairings": ["Bleu de Chanel", "Paco Rabanne Invictus", "Dior Sauvage"],
+      "avoidWith": ["YSL Black Opium"]
     },
     {
       "name": "Parfums de Marly Valaya",
-      "tags": ["floral", "musky", "fruity", "moderate", "day", "luxury"]
+      "tags": ["floral", "musky", "fruity", "moderate", "day", "luxury"],
+      "familyPrimary": "musky-floral",
+      "familySecondary": "fruity-clean",
+      "notes": ["white peach", "orange blossom", "white florals", "musk"],
+      "intensity": 3,
+      "sweetness": 2,
+      "freshness": 3,
+      "worksAs": ["base", "support", "accent"],
+      "pairings": ["Lanvin Éclat d’Arpège", "Issey Miyake Women", "Burberry Goddess", "Ariana Grande Cloud"],
+      "avoidWith": ["Azzaro The Most Wanted"]
     },
     {
       "name": "Ariana Grande Cloud",
-      "tags": ["sweet", "gourmand", "musky", "moderate", "day", "cozy"]
+      "tags": ["sweet", "gourmand", "musky", "moderate", "day", "cozy"],
+      "familyPrimary": "gourmand-musky",
+      "familySecondary": "sweet-ambery",
+      "notes": ["pear", "lavender", "coconut", "praline", "musk"],
+      "intensity": 3,
+      "sweetness": 4,
+      "freshness": 1,
+      "worksAs": ["base", "support"],
+      "pairings": ["Burberry Goddess", "Baccarat Rouge 540", "YSL Black Opium", "Parfums de Marly Valaya"],
+      "avoidWith": ["Issey Miyake Men"]
     },
     {
       "name": "Lanvin Éclat d’Arpège",
-      "tags": ["floral", "fruity", "soft", "day"]
+      "tags": ["floral", "fruity", "soft", "day"],
+      "familyPrimary": "floral-fruity",
+      "familySecondary": "soft-musky",
+      "notes": ["lilac", "peach", "green tea", "musk"],
+      "intensity": 2,
+      "sweetness": 2,
+      "freshness": 3,
+      "worksAs": ["support", "accent"],
+      "pairings": ["Issey Miyake Women", "DKNY Be Delicious", "Parfums de Marly Valaya"],
+      "avoidWith": ["Azzaro The Most Wanted", "YSL Black Opium"]
     },
     {
       "name": "Burberry Goddess",
-      "tags": ["sweet", "vanilla", "warm", "moderate", "night", "cozy"]
+      "tags": ["sweet", "vanilla", "warm", "moderate", "night", "cozy"],
+      "familyPrimary": "vanilla-gourmand",
+      "familySecondary": "warm-aromatic",
+      "notes": ["vanilla", "lavender", "warm woods"],
+      "intensity": 3,
+      "sweetness": 5,
+      "freshness": 1,
+      "worksAs": ["base", "support"],
+      "pairings": ["Ariana Grande Cloud", "Baccarat Rouge 540", "Parfums de Marly Valaya", "YSL Black Opium"],
+      "avoidWith": ["Issey Miyake Women"]
     },
     {
       "name": "DKNY Be Delicious",
-      "tags": ["fresh", "fruity", "moderate", "day", "spring"]
+      "tags": ["fresh", "fruity", "moderate", "day", "spring"],
+      "familyPrimary": "fresh-fruity",
+      "familySecondary": "green",
+      "notes": ["green apple", "cucumber", "grapefruit", "soft woods"],
+      "intensity": 2,
+      "sweetness": 2,
+      "freshness": 5,
+      "worksAs": ["support", "accent"],
+      "pairings": ["Issey Miyake Women", "Lanvin Éclat d’Arpège", "Parfums de Marly Valaya"],
+      "avoidWith": ["Azzaro The Most Wanted", "YSL Black Opium"]
     },
     {
       "name": "Baccarat Rouge 540",
-      "tags": ["amber", "woody", "strong", "night", "luxury", "statement"]
+      "tags": ["amber", "woody", "strong", "night", "luxury", "statement"],
+      "familyPrimary": "amber-woody",
+      "familySecondary": "sweet-radiant",
+      "notes": ["saffron", "jasmine", "amberwood", "cedar"],
+      "intensity": 5,
+      "sweetness": 3,
+      "freshness": 1,
+      "worksAs": ["base", "accent"],
+      "pairings": ["Burberry Goddess", "Ariana Grande Cloud", "Dior Sauvage", "YSL Black Opium"],
+      "avoidWith": ["Issey Miyake Women", "DKNY Be Delicious"]
     },
     {
       "name": "YSL Black Opium",
-      "tags": ["sweet", "vanilla", "gourmand", "strong", "night"]
+      "tags": ["sweet", "vanilla", "gourmand", "strong", "night"],
+      "familyPrimary": "gourmand-vanilla",
+      "familySecondary": "warm-floral",
+      "notes": ["coffee", "vanilla", "white flowers", "patchouli"],
+      "intensity": 4,
+      "sweetness": 5,
+      "freshness": 1,
+      "worksAs": ["base", "accent"],
+      "pairings": ["Burberry Goddess", "Ariana Grande Cloud", "Baccarat Rouge 540"],
+      "avoidWith": ["Issey Miyake Women", "DKNY Be Delicious", "Issey Miyake Men"]
     },
     {
       "name": "Jean Paul Gaultier Le Male",
-      "tags": ["sweet", "aromatic", "strong", "night"]
+      "tags": ["sweet", "aromatic", "strong", "night"],
+      "familyPrimary": "sweet-aromatic",
+      "familySecondary": "warm-spicy",
+      "notes": ["mint", "lavender", "vanilla", "amber"],
+      "intensity": 4,
+      "sweetness": 4,
+      "freshness": 2,
+      "worksAs": ["base", "support"],
+      "pairings": ["Azzaro The Most Wanted", "Burberry Goddess", "Dior Sauvage"],
+      "avoidWith": ["Issey Miyake Women"]
     },
     {
       "name": "Bleu de Chanel",
-      "tags": ["fresh", "woody", "aromatic", "moderate", "day", "allyear"]
+      "tags": ["fresh", "woody", "aromatic", "moderate", "day", "allyear"],
+      "familyPrimary": "fresh-woody",
+      "familySecondary": "aromatic-citrus",
+      "notes": ["citrus", "ginger", "woods", "incense"],
+      "intensity": 3,
+      "sweetness": 1,
+      "freshness": 4,
+      "worksAs": ["base", "support"],
+      "pairings": ["Dior Sauvage", "Issey Miyake Men", "Paco Rabanne Invictus"],
+      "avoidWith": ["YSL Black Opium"]
     },
     {
       "name": "Azzaro The Most Wanted",
-      "tags": ["sweet", "spicy", "strong", "night"]
+      "tags": ["sweet", "spicy", "strong", "night"],
+      "familyPrimary": "sweet-spicy",
+      "familySecondary": "ambery",
+      "notes": ["cardamom", "toffee", "amber woods"],
+      "intensity": 5,
+      "sweetness": 4,
+      "freshness": 1,
+      "worksAs": ["base", "accent"],
+      "pairings": ["Jean Paul Gaultier Le Male", "YSL Black Opium", "Burberry Goddess"],
+      "avoidWith": ["Issey Miyake Women", "Lanvin Éclat d’Arpège", "DKNY Be Delicious"]
     },
     {
       "name": "Paco Rabanne Invictus",
-      "tags": ["fresh", "aquatic", "strong", "day", "sporty"]
+      "tags": ["fresh", "aquatic", "strong", "day", "sporty"],
+      "familyPrimary": "fresh-aquatic",
+      "familySecondary": "woody-sporty",
+      "notes": ["marine accord", "grapefruit", "bay leaf", "woods"],
+      "intensity": 4,
+      "sweetness": 1,
+      "freshness": 5,
+      "worksAs": ["base", "support"],
+      "pairings": ["Dior Sauvage", "Bleu de Chanel", "Issey Miyake Men"],
+      "avoidWith": ["YSL Black Opium", "Azzaro The Most Wanted"]
     }
   ]
 }
