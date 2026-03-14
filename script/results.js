@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <h4 class="result-name">#${index + 1} ${escapeHtml(scent.name)}</h4>
       <p class="result-meta">
         Matches: <strong>${scent.score}</strong><br>
-        Profile: ${escapeHtml(prettyTags(scent.tags))}
+        Profile: ${escapeHtml(prettyTags(scent.tags || []))}
       </p>
       <span class="result-audience">${escapeHtml(scent.audience || "Unisex")}</span>
 

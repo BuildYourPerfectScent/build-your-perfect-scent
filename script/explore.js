@@ -4,91 +4,127 @@ const audienceFilter = document.getElementById("audienceFilter");
 const searchInput = document.getElementById("searchInput");
 
 let scents = [];
+let filteredScents = [];
 let selectedFamily = "all";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const res = await fetch("../data/scents.json");
-  const data = await res.json();
+  try {
+    const res = await fetch("../data/scents.json", { cache: "no-store" });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
 
-  scents = data.scents || [];
-  renderScents(scents);
+    const data = await res.json();
+    scents = data.scents || [];
+    filteredScents = [...scents];
+    renderScents(filteredScents);
 
-  familyCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      familyCards.forEach((item) => item.classList.remove("is-active"));
-      card.classList.add("is-active");
-      selectedFamily = card.dataset.family;
-      applyFilters();
+    familyCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        familyCards.forEach((item) => item.classList.remove("is-active"));
+        card.classList.add("is-active");
+        selectedFamily = card.dataset.family;
+        applyFilters();
+      });
     });
-  });
 
-  audienceFilter.addEventListener("change", applyFilters);
-  searchInput.addEventListener("input", applyFilters);
+    audienceFilter.addEventListener("change", applyFilters);
+    searchInput.addEventListener("input", applyFilters);
+
+    scentsGrid.addEventListener("click", handleGridClick);
+  } catch (error) {
+    console.error("Failed to load scents:", error);
+    scentsGrid.innerHTML = `
+      <div class="empty-state">
+        Failed to load scents. Please refresh the page.
+      </div>
+    `;
+  }
 });
 
 function applyFilters() {
-  let filtered = [...scents];
+  let list = [...scents];
   const audience = audienceFilter.value;
-  const search = searchInput.value.toLowerCase();
+  const search = searchInput.value.trim().toLowerCase();
 
   if (selectedFamily !== "all") {
-    filtered = filtered.filter((s) => s.tags.includes(selectedFamily));
+    list = list.filter((scent) => Array.isArray(scent.tags) && scent.tags.includes(selectedFamily));
   }
 
   if (audience !== "all") {
-    filtered = filtered.filter((s) => s.audience === audience);
+    list = list.filter((scent) => (scent.audience || "Unisex") === audience);
   }
 
   if (search) {
-    filtered = filtered.filter((s) => s.name.toLowerCase().includes(search));
+    list = list.filter((scent) => scent.name.toLowerCase().includes(search));
   }
 
-  renderScents(filtered);
+  filteredScents = list;
+  renderScents(filteredScents);
 }
 
 function renderScents(list) {
   if (!list.length) {
-    scentsGrid.innerHTML = `<p>No scents found.</p>`;
+    scentsGrid.innerHTML = `
+      <div class="empty-state">
+        No scents found for your current filters.
+      </div>
+    `;
     return;
   }
 
-  scentsGrid.innerHTML = list.map((scent) => `
-    <div class="scent-card">
-      <h3 class="scent-name">${escapeHtml(scent.name)}</h3>
-      <p class="scent-meta">${escapeHtml(prettyTags(scent.tags))}</p>
-      <span class="scent-audience">${escapeHtml(scent.audience || "Unisex")}</span>
+  scentsGrid.innerHTML = list
+    .map((scent, index) => `
+      <div class="scent-card">
+        <h3 class="scent-name">${escapeHtml(scent.name)}</h3>
+        <p class="scent-meta">${escapeHtml(prettyTags(scent.tags || []))}</p>
+        <span class="scent-audience">${escapeHtml(scent.audience || "Unisex")}</span>
 
-      <div class="scent-actions">
-        <button
-          class="btn btn-primary"
-          type="button"
-          onclick='orderSingle(${JSON.stringify(scent).replace(/'/g, "&apos;")})'
-        >
-          Order
-        </button>
+        <div class="scent-actions">
+          <button
+            class="btn btn-primary explore-order-btn"
+            type="button"
+            data-index="${index}"
+          >
+            Order
+          </button>
 
-        <button
-          class="btn btn-ghost"
-          type="button"
-          onclick='mixSingle(${JSON.stringify(scent).replace(/'/g, "&apos;")})'
-        >
-          Mix
-        </button>
+          <button
+            class="btn btn-ghost explore-mix-btn"
+            type="button"
+            data-index="${index}"
+          >
+            Mix
+          </button>
+        </div>
       </div>
-    </div>
-  `).join("");
+    `)
+    .join("");
 }
 
-function orderSingle(scent) {
-  sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
-  sessionStorage.removeItem("mixBlend");
-  window.location.href = "./order.html";
-}
+function handleGridClick(event) {
+  const orderBtn = event.target.closest(".explore-order-btn");
+  const mixBtn = event.target.closest(".explore-mix-btn");
 
-function mixSingle(scent) {
-  sessionStorage.setItem("mixPool", JSON.stringify([scent]));
-  sessionStorage.removeItem("singleScentOrder");
-  window.location.href = "./mix.html?mode=direct";
+  if (orderBtn) {
+    const scent = filteredScents[Number(orderBtn.dataset.index)];
+    if (!scent) return;
+
+    sessionStorage.setItem("singleScentOrder", JSON.stringify(scent));
+    sessionStorage.removeItem("mixBlend");
+    window.location.href = "./order.html";
+    return;
+  }
+
+  if (mixBtn) {
+    const scent = filteredScents[Number(mixBtn.dataset.index)];
+    if (!scent) return;
+
+    sessionStorage.setItem("mixPool", JSON.stringify([scent]));
+    sessionStorage.removeItem("singleScentOrder");
+    sessionStorage.removeItem("mixBlend");
+    window.location.href = "./mix.html?mode=direct";
+  }
 }
 
 function prettyTags(tags) {

@@ -6,13 +6,16 @@
 }
 
 .family-card{
-  text-align:left;
-  padding:16px;
+  appearance:none;
+  -webkit-appearance:none;
   border:1px solid var(--stroke);
   border-radius:var(--radius);
   background:rgba(255,255,255,0.05);
   color:var(--text);
+  padding:16px;
+  text-align:left;
   cursor:pointer;
+  font:inherit;
   transition:transform .16s ease, background .16s ease, border-color .16s ease;
 }
 
@@ -38,6 +41,7 @@
   display:block;
   font-size:14px;
   color:var(--muted);
+  line-height:1.45;
 }
 
 .explore-controls{
@@ -55,6 +59,10 @@
   background:rgba(255,255,255,0.05);
   color:var(--text);
   font:inherit;
+}
+
+.explore-controls input::placeholder{
+  color:var(--muted-2);
 }
 
 .scents-grid{
@@ -106,6 +114,15 @@
   display:flex;
   gap:8px;
   flex-wrap:wrap;
+}
+
+.empty-state{
+  grid-column:1 / -1;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:18px;
+  color:var(--muted);
 }
 
 @media (max-width:900px){
