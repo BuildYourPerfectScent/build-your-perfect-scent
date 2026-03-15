@@ -2,6 +2,14 @@
   "scents": [
     {
       "name": "Dior Sauvage",
+      "brand": "Dior",
+      "releaseDate": "2015",
+      "reviewSummary": "A very popular fresh-spicy men’s scent. Review communities tend to describe it as mass-appealing, compliment-friendly, bold, and easy to wear for people who want a confident modern signature.",
+      "wearContext": "Usually worn for everyday confidence, dates, dinners, and general day-to-night use. Works especially well in spring, fall, and cooler evenings.",
+      "sources": [
+        { "label": "Parfumo — Dior Sauvage", "url": "https://www.parfumo.com/Perfumes/Dior/Sauvage_Eau_de_Toilette" },
+        { "label": "The Scent Base — Dior Sauvage", "url": "https://thescentbase.com/perfumes/dior/sauvage" }
+      ],
       "tags": ["fresh", "woody", "spicy", "strong", "day", "night"],
       "audience": "Men",
       "familyPrimary": "fresh-aromatic",
@@ -16,6 +24,14 @@
     },
     {
       "name": "Issey Miyake Women",
+      "brand": "Issey Miyake",
+      "releaseDate": "1992",
+      "reviewSummary": "A classic fresh-floral aquatic fragrance often described as airy, elegant, watery, and clean. Many reviews treat it as a timeless daytime scent with a graceful, polished feel.",
+      "wearContext": "Usually worn during daytime, office settings, brunches, and warm weather. Best suited for spring and summer, especially when you want something fresh and refined.",
+      "sources": [
+        { "label": "Parfumo — L'Eau d'Issey", "url": "https://www.parfumo.com/Perfumes/Issey_Miyake/L_Eau_d_Issey_Eau_de_Toilette" },
+        { "label": "Find A Fragrance — L'Eau d'Issey Review", "url": "https://www.findafragrance.com/fragrance-reviews/leau-dissey-eau-de-toilette" }
+      ],
       "tags": ["fresh", "floral", "aquatic", "soft", "day"],
       "audience": "Women",
       "familyPrimary": "aquatic-floral",
@@ -30,6 +46,14 @@
     },
     {
       "name": "Issey Miyake Men",
+      "brand": "Issey Miyake",
+      "releaseDate": "1994",
+      "reviewSummary": "A long-running fresh-citrusy men’s classic. Reviewers usually describe it as clean, aquatic, bright, and reliable, especially for people who enjoy crisp citrus with a watery feel.",
+      "wearContext": "Usually worn in daytime, office settings, warm weather, and casual summer use. A strong pick for clean daily wear.",
+      "sources": [
+        { "label": "Parfumo — L'Eau d'Issey pour Homme", "url": "https://www.parfumo.com/Perfumes/Issey_Miyake/L_Eau_d_Issey_pour_Homme_Eau_de_Toilette" },
+        { "label": "FragranceReview — L'Eau d'Issey pour Homme", "url": "https://www.fragrancereview.com/perfume/issey-miyake-leau-dissey-pour-homme-eau-de-toilette/" }
+      ],
       "tags": ["fresh", "woody", "aquatic", "moderate", "day"],
       "audience": "Men",
       "familyPrimary": "aquatic-woody",
@@ -44,6 +68,14 @@
     },
     {
       "name": "Parfums de Marly Valaya",
+      "brand": "Parfums de Marly",
+      "releaseDate": "2023",
+      "reviewSummary": "Commonly described as a clean, musky, fresh-floral luxury scent with a polished and soft elegance. Reviewers often mention its refined freshness and above-average performance.",
+      "wearContext": "Usually worn for daytime elegance, smart casual wear, and polished social settings. Works especially well in spring and all-year daytime wear.",
+      "sources": [
+        { "label": "Parfumo — Valaya", "url": "https://www.parfumo.com/Parfums/Parfums_de_Marly/valaya-eau-de-parfum" },
+        { "label": "The Scent Base — Valaya", "url": "https://thescentbase.com/perfumes/parfums-de-marly/valaya" }
+      ],
       "tags": ["floral", "musky", "fruity", "moderate", "day", "luxury"],
       "audience": "Women",
       "familyPrimary": "musky-floral",
@@ -58,6 +90,14 @@
     },
     {
       "name": "Ariana Grande Cloud",
+      "brand": "Ariana Grande",
+      "releaseDate": "2018",
+      "reviewSummary": "Often described as creamy, sweet, cozy, and crowd-pleasing. Review pages frequently mention its soft gourmand-musky feel and its easy appeal for people who enjoy comforting sweet scents.",
+      "wearContext": "Usually worn casually, during cozy days, mall days, relaxed nights, and cooler weather. Works well for easy everyday sweetness and soft evening wear.",
+      "sources": [
+        { "label": "Parfumo — Ariana Grande Cloud", "url": "https://www.parfumo.com/Parfums/Ariana_Grande/cloud-eau-de-parfum" },
+        { "label": "The Scent Base — Ariana Grande Cloud", "url": "https://thescentbase.com/perfumes/ariana-grande/cloud" }
+      ],
       "tags": ["sweet", "gourmand", "musky", "moderate", "day", "cozy"],
       "audience": "Women",
       "familyPrimary": "gourmand-musky",
@@ -72,6 +112,14 @@
     },
     {
       "name": "Lanvin Éclat d’Arpège",
+      "brand": "Lanvin",
+      "releaseDate": "2002",
+      "reviewSummary": "Usually described as delicate, floral-fresh, soft, and uplifting. Many reviews frame it as an easy, feminine, clean scent with a gentle elegance.",
+      "wearContext": "Usually worn in daytime, especially spring and summer, for office wear, errands, lunch dates, and light feminine daily use.",
+      "sources": [
+        { "label": "Parfumo — Éclat d’Arpège", "url": "https://www.parfumo.com/Perfumes/Lanvin/eclat-d-arpege-eau-de-parfum" },
+        { "label": "FragranceReview — Éclat d’Arpège", "url": "https://www.fragrancereview.com/perfume/lanvin-eclat-d-arpege-eau-de-parfum/" }
+      ],
       "tags": ["floral", "fruity", "soft", "day"],
       "audience": "Women",
       "familyPrimary": "floral-fruity",
@@ -86,6 +134,14 @@
     },
     {
       "name": "Burberry Goddess",
+      "brand": "Burberry",
+      "releaseDate": "2023",
+      "reviewSummary": "A very well-liked vanilla-forward fragrance. Reviews commonly describe it as sweet, comforting, smooth, modern, and polished, with strong mainstream appeal for vanilla lovers.",
+      "wearContext": "Usually worn for cooler weather, date nights, evening wear, and cozy dressed-up settings. Also works for daily wear if you enjoy sweeter vanilla scents.",
+      "sources": [
+        { "label": "Parfumo — Burberry Goddess", "url": "https://www.parfumo.com/Perfumes/Burberry/goddess-eau-de-parfum" },
+        { "label": "Who What Wear — Burberry Goddess Review", "url": "https://www.whowhatwear.com/beauty/fragrance/burberry-goddess-perfume-review" }
+      ],
       "tags": ["sweet", "vanilla", "warm", "moderate", "night", "cozy"],
       "audience": "Women",
       "familyPrimary": "vanilla-gourmand",
@@ -100,6 +156,14 @@
     },
     {
       "name": "DKNY Be Delicious",
+      "brand": "DKNY",
+      "releaseDate": "2004",
+      "reviewSummary": "Known for its crisp green-apple freshness. Reviews usually describe it as bright, youthful, easygoing, and refreshing, with a playful clean-fruity personality.",
+      "wearContext": "Usually worn during daytime, spring, summer, errands, and casual daily wear. Best when you want something light, crisp, and cheerful.",
+      "sources": [
+        { "label": "Parfumo — DKNY Be Delicious", "url": "https://www.parfumo.com/Parfums/DKNY/DKNY_Be_Delicious" },
+        { "label": "FragranceReview — DKNY Be Delicious", "url": "https://www.fragrancereview.com/perfume/dkny-dkny-be-delicious/" }
+      ],
       "tags": ["fresh", "fruity", "moderate", "day", "spring"],
       "audience": "Women",
       "familyPrimary": "fresh-fruity",
@@ -114,6 +178,14 @@
     },
     {
       "name": "Baccarat Rouge 540",
+      "brand": "Maison Francis Kurkdjian",
+      "releaseDate": "2016",
+      "reviewSummary": "A famous sweet-woody luxury fragrance with strong visibility online and in review communities. It is often described as distinctive, airy, radiant, long-lasting, and highly complimented.",
+      "wearContext": "Usually worn for evenings, upscale settings, parties, special occasions, and statement wear. Many people also wear it year-round in lighter sprays.",
+      "sources": [
+        { "label": "Parfumo — Baccarat Rouge 540", "url": "https://www.parfumo.com/Perfumes/Maison_Francis_Kurkdjian/Baccarat_Rouge_540_Eau_de_Parfum" },
+        { "label": "Cosmopolitan — Baccarat Rouge 540 Review", "url": "https://www.cosmopolitan.com/style-beauty/beauty/a69096131/baccarat-rouge-540-review/" }
+      ],
       "tags": ["amber", "woody", "strong", "night", "luxury", "statement"],
       "audience": "Unisex",
       "familyPrimary": "amber-woody",
@@ -128,6 +200,14 @@
     },
     {
       "name": "YSL Black Opium",
+      "brand": "Yves Saint Laurent",
+      "releaseDate": "2014",
+      "reviewSummary": "A popular coffee-vanilla gourmand often described as sexy, sweet, dark, and night-leaning. Many reviewers treat it as an easy evening favorite with mainstream appeal.",
+      "wearContext": "Usually worn on nights out, dinners, dates, and cooler weather. Best when you want a warm, sweeter, more seductive profile.",
+      "sources": [
+        { "label": "Parfumo — Black Opium", "url": "https://www.parfumo.de/Parfums/Yves_Saint_Laurent/Black_Opium" },
+        { "label": "FragranceReview — Black Opium", "url": "https://www.fragrancereview.com/perfume/yves-saint-laurent-black-opium-eau-de-parfum/" }
+      ],
       "tags": ["sweet", "vanilla", "gourmand", "strong", "night"],
       "audience": "Women",
       "familyPrimary": "gourmand-vanilla",
@@ -142,6 +222,14 @@
     },
     {
       "name": "Jean Paul Gaultier Le Male",
+      "brand": "Jean Paul Gaultier",
+      "releaseDate": "1995",
+      "reviewSummary": "A classic sweet-spicy men’s fragrance with a strong nostalgic following. Review communities often describe it as sexy, recognizable, warm, and ideal for people who enjoy sweeter masculine scents.",
+      "wearContext": "Usually worn for evenings, parties, cooler weather, and date settings. Best for a bold, sweeter masculine presence.",
+      "sources": [
+        { "label": "Parfumo — Le Male", "url": "https://www.parfumo.com/Perfumes/Jean_Paul_Gaultier/Le_Male_Eau_de_Toilette" },
+        { "label": "Wikipedia — Le Male", "url": "https://en.wikipedia.org/wiki/Le_Male" }
+      ],
       "tags": ["sweet", "aromatic", "strong", "night"],
       "audience": "Men",
       "familyPrimary": "sweet-aromatic",
@@ -156,6 +244,14 @@
     },
     {
       "name": "Bleu de Chanel",
+      "brand": "Chanel",
+      "releaseDate": "2010",
+      "reviewSummary": "A major signature-scent favorite in men’s fragrance circles. It’s commonly described as fresh, versatile, polished, and safe in the best way for people who want a refined masculine everyday scent.",
+      "wearContext": "Usually worn for office, meetings, dinners, dates, travel, and general all-year use. One of the most versatile day-to-night masculine profiles.",
+      "sources": [
+        { "label": "Parfumo — Bleu de Chanel", "url": "https://www.parfumo.com/Perfumes/Chanel/Bleu_de_Chanel" },
+        { "label": "Wikipedia — Bleu de Chanel", "url": "https://en.wikipedia.org/wiki/Bleu_de_Chanel" }
+      ],
       "tags": ["fresh", "woody", "aromatic", "moderate", "day", "allyear"],
       "audience": "Men",
       "familyPrimary": "fresh-woody",
@@ -170,6 +266,14 @@
     },
     {
       "name": "Azzaro The Most Wanted",
+      "brand": "Azzaro",
+      "releaseDate": "2022",
+      "reviewSummary": "Frequently described as sweet, spicy, bold, and powerful. Reviews often frame it as an attention-grabbing cool-weather scent with strong evening energy.",
+      "wearContext": "Usually worn at night, during cooler months, parties, and date settings. Best when you want something louder, sweeter, and more intense.",
+      "sources": [
+        { "label": "Parfumo — The Most Wanted Parfum", "url": "https://www.parfumo.com/Perfumes/Azzaro/the-most-wanted-parfum" },
+        { "label": "The Smell of Man — The Most Wanted Review", "url": "https://thesmellofman.com/2025/03/06/before-you-buy-azzaro-the-most-wanted-parfum/" }
+      ],
       "tags": ["sweet", "spicy", "strong", "night"],
       "audience": "Men",
       "familyPrimary": "sweet-spicy",
@@ -184,6 +288,14 @@
     },
     {
       "name": "Paco Rabanne Invictus",
+      "brand": "Rabanne",
+      "releaseDate": "2013",
+      "reviewSummary": "A sporty fresh-aquatic masculine scent often described as energetic, youthful, and easy to like. Reviews typically position it as a crowd-pleasing modern freshie.",
+      "wearContext": "Usually worn during daytime, gym-adjacent casual wear, vacations, summer, and sporty social settings. Best when you want freshness with stronger projection.",
+      "sources": [
+        { "label": "Parfumo — Invictus", "url": "https://www.parfumo.com/Parfums/Rabanne/Invictus_Eau_de_Toilette" },
+        { "label": "FragranceReview — Invictus", "url": "https://www.fragrancereview.com/perfume/paco-rabanne-invictus-eau-de-toilette/" }
+      ],
       "tags": ["fresh", "aquatic", "strong", "day", "sporty"],
       "audience": "Men",
       "familyPrimary": "fresh-aquatic",
