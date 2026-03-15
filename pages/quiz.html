@@ -35,8 +35,39 @@ Answer a few questions and we’ll recommend scents that match your preferences.
 
 </div>
 
-
 <div class="card">
+
+<div class="card-head">
+
+<h3 class="card-title">Choose your scent direction</h3>
+
+<p class="card-note">
+This preference is separate from the quiz length and helps us guide the recommendations better.
+</p>
+
+</div>
+
+<div class="level-grid audience-grid">
+  <button class="level-btn audience-btn" data-audience="Women" type="button">
+    <span class="level-num">W</span>
+    <span class="level-label">Mainly Women’s Scents</span>
+    <span class="level-desc">Often softer, floral, fruity, musky, sweet, or powdery.</span>
+  </button>
+
+  <button class="level-btn audience-btn" data-audience="Men" type="button">
+    <span class="level-num">M</span>
+    <span class="level-label">Mainly Men’s Scents</span>
+    <span class="level-desc">Often fresh, woody, aromatic, spicy, deep, or structured.</span>
+  </button>
+
+  <button class="level-btn audience-btn" data-audience="Unisex" type="button">
+    <span class="level-num">U</span>
+    <span class="level-label">Unisex / Open to Both</span>
+    <span class="level-desc">Balanced picks across feminine, masculine, and versatile profiles.</span>
+  </button>
+</div>
+
+<div class="divider"></div>
 
 <div class="card-head">
 
@@ -48,10 +79,9 @@ Pick a quick, guided, or detailed quiz.
 
 </div>
 
-
 <div class="level-grid">
 
-<button class="level-btn" data-level="3" type="button">
+<button class="level-btn quiz-level-btn" data-level="3" type="button">
 
 <span class="level-num">3</span>
 <span class="level-label">Quick Match</span>
@@ -59,7 +89,7 @@ Pick a quick, guided, or detailed quiz.
 
 </button>
 
-<button class="level-btn" data-level="5" type="button">
+<button class="level-btn quiz-level-btn" data-level="5" type="button">
 
 <span class="level-num">5</span>
 <span class="level-label">Guided Profile</span>
@@ -67,7 +97,7 @@ Pick a quick, guided, or detailed quiz.
 
 </button>
 
-<button class="level-btn" data-level="10" type="button">
+<button class="level-btn quiz-level-btn" data-level="10" type="button">
 
 <span class="level-num">10</span>
 <span class="level-label">Precision</span>
@@ -77,9 +107,11 @@ Pick a quick, guided, or detailed quiz.
 
 </div>
 
+<div id="quizStartHint" class="card-note" style="margin-top: 12px;">
+  Please choose your scent direction first, then select a quiz length.
+</div>
 
 <div class="divider"></div>
-
 
 <div id="quizArea" class="quiz-area" hidden>
 
@@ -94,7 +126,6 @@ Pick what feels most like you.
 </p>
 
 </div>
-
 
 <div class="progress">
 
@@ -112,9 +143,7 @@ Question 1 of 3
 
 </div>
 
-
 <div id="questionCard" class="question-card"></div>
-
 
 <div class="quiz-actions">
 
@@ -138,7 +167,6 @@ Next
 
 </main>
 
-
 <footer class="site-footer">
 
 <div class="container footer-inner">
@@ -154,7 +182,6 @@ Inspired fragrances tailored to your preferences.
 </div>
 
 </footer>
-
 
 <script src="../script/main.js"></script>
 <script src="../script/quiz.js"></script>

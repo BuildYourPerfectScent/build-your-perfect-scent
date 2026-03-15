@@ -81,10 +81,10 @@
                   <label for="bottleSize">Bottle Size</label>
                   <select id="bottleSize" name="bottle_size" required>
                     <option value="">Select bottle size</option>
-                    <option value="10 ml">10 ml Tube</option>
-                    <option value="30 ml">30 ml Square</option>
-                    <option value="50 ml">50 ml Square</option>
-                    <option value="100 ml">100 ml Square</option>
+                    <option value="10 ml">10 ml — PHP 200</option>
+                    <option value="30 ml">30 ml — PHP 500</option>
+                    <option value="50 ml">50 ml — Price to be added</option>
+                    <option value="100 ml">100 ml — Price to be added</option>
                   </select>
                 </div>
 
@@ -97,6 +97,12 @@
                   <label for="notes">Additional Notes</label>
                   <textarea id="notes" name="notes" rows="4" placeholder="Delivery notes, preferred contact time, special requests, etc."></textarea>
                 </div>
+
+                <div class="form-group form-group-full">
+                  <div id="pricingNote" class="card-note">
+                    Pricing guide: 10 ml — PHP 200 · 30 ml — PHP 500 · 50 ml / 100 ml — price to be added
+                  </div>
+                </div>
               </div>
 
               <input type="hidden" id="summaryOrderMode" name="summary_order_mode" />
@@ -105,6 +111,8 @@
               <input type="hidden" id="summaryBlendVerdict" name="summary_blend_verdict" />
               <input type="hidden" id="summaryBlendStyle" name="summary_blend_style" />
               <input type="hidden" id="summaryBlendRatios" name="summary_blend_ratios" />
+              <input type="hidden" id="summaryAudiencePreference" name="summary_audience_preference" />
+              <input type="hidden" id="summaryEstimatedPrice" name="summary_estimated_price" />
 
               <div class="submit-wrap">
                 <button type="submit" class="btn btn-primary" id="submitOrderBtn">Send Order</button>

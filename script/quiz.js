@@ -5,10 +5,14 @@ let scents = [];
 let quizzes = {};
 
 let selectedLevel = null;
+let selectedAudience = null;
 let currentIndex = 0;
 let answers = [];
 
-const levelButtons = $$(".level-btn");
+const audienceButtons = $$(".audience-btn");
+const levelButtons = $$(".quiz-level-btn");
+const quizStartHint = $("#quizStartHint");
+
 const quizArea = $("#quizArea");
 const questionCard = $("#questionCard");
 const progressText = $("#progressText");
@@ -19,9 +23,13 @@ const nextBtn = $("#nextBtn");
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [scentsRes, quizRes] = await Promise.all([
-      fetch("../data/scents.json"),
-      fetch("../data/quiz.json"),
+      fetch("../data/scents.json", { cache: "no-store" }),
+      fetch("../data/quiz.json", { cache: "no-store" })
     ]);
+
+    if (!scentsRes.ok || !quizRes.ok) {
+      throw new Error("Failed to load quiz resources.");
+    }
 
     const scentsData = await scentsRes.json();
     const quizData = await quizRes.json();
@@ -42,8 +50,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function bindEvents() {
+  audienceButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      audienceButtons.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      selectedAudience = btn.dataset.audience;
+      sessionStorage.setItem("quizAudiencePreference", selectedAudience);
+
+      updateStartHint();
+    });
+  });
+
   levelButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      if (!selectedAudience) {
+        alert("Please choose your scent direction first.");
+        return;
+      }
+
       levelButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
 
@@ -84,6 +109,21 @@ function bindEvents() {
       });
     }
   });
+}
+
+function updateStartHint() {
+  if (!selectedAudience) {
+    quizStartHint.textContent = "Please choose your scent direction first, then select a quiz length.";
+    return;
+  }
+
+  const labelMap = {
+    Women: "Mainly Women’s Scents",
+    Men: "Mainly Men’s Scents",
+    Unisex: "Unisex / Open to Both"
+  };
+
+  quizStartHint.textContent = `Selected direction: ${labelMap[selectedAudience]}. Now choose your quiz length.`;
 }
 
 function startQuiz(level) {
@@ -131,7 +171,7 @@ function renderQuestion() {
 }
 
 function showResults() {
-  const selectedTags = answers.flat();
+  const selectedTags = answers.flat().filter(Boolean);
 
   const scored = scents
     .map((scent) => {
@@ -144,9 +184,14 @@ function showResults() {
         if (tag === "statement" && scent.tags.includes("luxury")) score += 1;
       });
 
+      score += getAudienceScoreBoost(scent, selectedAudience);
+
       return { ...scent, score };
     })
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.name.localeCompare(b.name);
+    });
 
   const topResults = scored.slice(0, 3);
   const moreResults = scored.slice(3, 6);
@@ -154,8 +199,30 @@ function showResults() {
   sessionStorage.setItem("quizTopResults", JSON.stringify(topResults));
   sessionStorage.setItem("quizMoreResults", JSON.stringify(moreResults));
   sessionStorage.setItem("quizSelectedTags", JSON.stringify(selectedTags));
+  sessionStorage.setItem("quizAudiencePreference", selectedAudience || "Unisex");
+  sessionStorage.setItem(
+    "quizMeta",
+    JSON.stringify({
+      level: selectedLevel,
+      audience: selectedAudience || "Unisex"
+    })
+  );
 
   window.location.href = "../pages/results.html";
+}
+
+function getAudienceScoreBoost(scent, audiencePreference) {
+  const scentAudience = scent.audience || "Unisex";
+
+  if (!audiencePreference || audiencePreference === "Unisex") {
+    if (scentAudience === "Unisex") return 3;
+    return 1;
+  }
+
+  if (audiencePreference === scentAudience) return 4;
+  if (scentAudience === "Unisex") return 2;
+
+  return 0;
 }
 
 function animateQuestion(direction, updateFn) {
