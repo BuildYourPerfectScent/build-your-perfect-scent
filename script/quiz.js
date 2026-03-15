@@ -190,6 +190,13 @@ function showResults() {
     })
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
+
+      const audienceDelta =
+        getAudiencePriority(b.audience, selectedAudience) -
+        getAudiencePriority(a.audience, selectedAudience);
+
+      if (audienceDelta !== 0) return audienceDelta;
+
       return a.name.localeCompare(b.name);
     });
 
@@ -215,14 +222,27 @@ function getAudienceScoreBoost(scent, audiencePreference) {
   const scentAudience = scent.audience || "Unisex";
 
   if (!audiencePreference || audiencePreference === "Unisex") {
-    if (scentAudience === "Unisex") return 3;
+    if (scentAudience === "Unisex") return 6;
+    return 2;
+  }
+
+  if (scentAudience === audiencePreference) return 10;
+  if (scentAudience === "Unisex") return 4;
+
+  return -3;
+}
+
+function getAudiencePriority(scentAudience, audiencePreference) {
+  const normalized = scentAudience || "Unisex";
+
+  if (!audiencePreference || audiencePreference === "Unisex") {
+    if (normalized === "Unisex") return 2;
     return 1;
   }
 
-  if (audiencePreference === scentAudience) return 4;
-  if (scentAudience === "Unisex") return 2;
-
-  return 0;
+  if (normalized === audiencePreference) return 3;
+  if (normalized === "Unisex") return 2;
+  return 1;
 }
 
 function animateQuestion(direction, updateFn) {

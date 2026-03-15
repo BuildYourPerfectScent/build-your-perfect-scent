@@ -78,10 +78,16 @@
   padding:12px 14px;
   border-radius:var(--radius-sm);
   border:1px solid var(--stroke);
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.08);
   color:var(--text);
   font:inherit;
   outline:none;
+  min-height:46px;
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
 }
 
 .form-group input::placeholder,
@@ -89,11 +95,46 @@
   color:var(--muted-2);
 }
 
+/* Windows-safe select styling */
+.form-group select,
+#orderType,
+#bottleSize{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.06));
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* Dropdown menu items */
+.form-group select option,
+#orderType option,
+#bottleSize option{
+  background:#5f2b32;
+  color:#ffffff;
+}
+
+/* First placeholder option */
+.form-group select option[value=""],
+#orderType option[value=""],
+#bottleSize option[value=""]{
+  color:rgba(255,255,255,0.82);
+}
+
+/* Focus */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
-  border-color:rgba(255,255,255,0.3);
+  border-color:rgba(255,255,255,0.32);
   box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset;
+}
+
+/* Optional subtle hover for selects */
+.form-group select:hover{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.07));
 }
 
 .submit-wrap{
@@ -154,5 +195,38 @@
 
   .form-grid{
     grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .summary-block{
+    padding:13px;
+  }
+
+  .summary-block h4{
+    font-size:18px;
+  }
+
+  .summary-block p,
+  .summary-list,
+  .order-status{
+    font-size:13px;
+  }
+
+  .submit-wrap{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .submit-wrap .btn{
+    width:100%;
+  }
+
+  .success-actions{
+    flex-direction:column;
+  }
+
+  .success-actions .btn{
+    width:100%;
   }
 }
