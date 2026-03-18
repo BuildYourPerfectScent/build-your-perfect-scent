@@ -83,3 +83,104 @@
   font-size: 15px;
   font-weight: 500;
 }
+
+.steps-grid,
+.features-grid,
+.bottle-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.step-card,
+.feature-card,
+.bottle-card{
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.step-card:hover,
+.feature-card:hover,
+.bottle-card:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.07);
+}
+
+.step-number{
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.06);
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.step-card h3,
+.feature-card h3,
+.bottle-card h3{
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.step-card p,
+.feature-card p,
+.bottle-card p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cta-card{
+  text-align: center;
+  padding: 28px;
+}
+
+.cta-card .section-title{
+  margin-bottom: 10px;
+}
+
+.cta-card .section-subtitle{
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 18px;
+}
+
+.contact-card p{
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contact-card span{
+  color: var(--text);
+  font-weight: 700;
+}
+
+@media (max-width: 900px){
+  .hero-inner,
+  .steps-grid,
+  .features-grid,
+  .bottle-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .motif-card{
+    min-height: 280px;
+  }
+}
