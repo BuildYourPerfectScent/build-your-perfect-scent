@@ -61,11 +61,33 @@
           </div>
         </div>
 
-        <div class="hero-right" aria-hidden="true">
+        <div class="hero-right" aria-label="Featured scent media">
           <div class="motif-card">
-            <div class="motif-placeholder">
-              <h3>Your Signature Scent</h3>
-              <p>Add your bottle image, perfume photo, or brand motif here later.</p>
+            <div class="slider" id="heroSlider">
+              <div class="slides">
+                <div class="slide active">
+                  <img src="./resources/pictures/picture1.jpg" alt="Featured perfume visual 1">
+                </div>
+
+                <div class="slide">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="./resources/videos/video1.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="slide">
+                  <img src="./resources/pictures/picture2.jpg" alt="Featured perfume visual 2">
+                </div>
+              </div>
+
+              <button class="slider-arrow slider-arrow-prev" id="heroPrevBtn" type="button" aria-label="Previous slide">
+                ‹
+              </button>
+              <button class="slider-arrow slider-arrow-next" id="heroNextBtn" type="button" aria-label="Next slide">
+                ›
+              </button>
+
+              <div class="slider-dots" id="sliderDots" aria-label="Slide navigation"></div>
             </div>
           </div>
         </div>
@@ -214,8 +236,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="./script/main.js"></script>
 </body>
 </html>
