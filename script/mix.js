@@ -11,6 +11,10 @@ const mixResultArea = document.getElementById("mixResultArea");
 const mixResultCard = document.getElementById("mixResultCard");
 const restartMixBtn = document.getElementById("restartMixBtn");
 
+const scentModal = document.getElementById("scentModal");
+const scentModalContent = document.getElementById("scentModalContent");
+const closeScentModalBtn = document.getElementById("closeScentModalBtn");
+
 let mixPool = [];
 let selectedScents = [];
 let mixAnswers = [];
@@ -100,19 +104,29 @@ function renderMixChoices() {
       const isChecked = selectedScents.includes(p.name) ? "checked" : "";
 
       return `
-        <label class="mix-choice" for="mix_${i}">
-          <input
-            type="checkbox"
-            class="mix-checkbox"
-            id="mix_${i}"
-            data-name="${escapeHtml(p.name)}"
-            ${isChecked}
+        <div class="mix-choice-card">
+          <label class="mix-choice" for="mix_${i}">
+            <input
+              type="checkbox"
+              class="mix-checkbox"
+              id="mix_${i}"
+              data-name="${escapeHtml(p.name)}"
+              ${isChecked}
+            >
+            <span class="mix-choice-text-wrap">
+              <span class="mix-choice-text">${escapeHtml(p.name)}</span>
+              <span class="mix-choice-meta">${escapeHtml(family)}</span>
+            </span>
+          </label>
+
+          <button
+            class="btn btn-ghost mix-view-btn"
+            type="button"
+            data-index="${i}"
           >
-          <span class="mix-choice-text-wrap">
-            <span class="mix-choice-text">${escapeHtml(p.name)}</span>
-            <span class="mix-choice-meta">${escapeHtml(family)}</span>
-          </span>
-        </label>
+            View This Scent
+          </button>
+        </div>
       `;
     })
     .join("");
@@ -136,6 +150,14 @@ function renderMixChoices() {
       }
 
       updateMixState();
+    });
+  });
+
+  mixPerfumeList.querySelectorAll(".mix-view-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const scent = mixPool[Number(button.dataset.index)];
+      if (!scent) return;
+      openScentModal(scent);
     });
   });
 
@@ -203,6 +225,24 @@ function bindEvents() {
   restartMixBtn.addEventListener("click", () => {
     sessionStorage.removeItem("mixBlend");
     window.location.reload();
+  });
+
+  if (closeScentModalBtn) {
+    closeScentModalBtn.addEventListener("click", closeScentModal);
+  }
+
+  if (scentModal) {
+    scentModal.addEventListener("click", (event) => {
+      if (event.target.matches("[data-close-modal='true']")) {
+        closeScentModal();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && scentModal && !scentModal.hidden) {
+      closeScentModal();
+    }
   });
 }
 
@@ -664,6 +704,80 @@ function roleLabel(role) {
   return "Accent";
 }
 
+function openScentModal(scent) {
+  if (!scentModal || !scentModalContent) return;
+
+  const sourceLinks = Array.isArray(scent.sources)
+    ? scent.sources
+        .map(
+          (source) => `
+            <li>
+              <a href="${escapeAttr(source.url)}" target="_blank" rel="noopener noreferrer">
+                ${escapeHtml(source.label)}
+              </a>
+            </li>
+          `
+        )
+        .join("")
+    : "";
+
+  scentModalContent.innerHTML = `
+    <div class="scent-modal-header">
+      <p class="scent-modal-kicker">${escapeHtml(scent.brand || "Brand")}</p>
+      <h3 id="scentModalTitle" class="scent-modal-title">${escapeHtml(scent.name)}</h3>
+      <p class="scent-modal-subtitle">${escapeHtml(scent.audience || "Unisex")} • Released ${escapeHtml(scent.releaseDate || "N/A")}</p>
+    </div>
+
+    <div class="scent-modal-grid">
+      <div class="scent-modal-block">
+        <h4>Profile</h4>
+        <p>${escapeHtml(prettyTags(scent.tags || []))}</p>
+      </div>
+
+      <div class="scent-modal-block">
+        <h4>Notes</h4>
+        <p>${escapeHtml((scent.notes || []).join(", "))}</p>
+      </div>
+
+      <div class="scent-modal-block">
+        <h4>When it's usually worn</h4>
+        <p>${escapeHtml(scent.wearContext || "No wear context added yet.")}</p>
+      </div>
+
+      <div class="scent-modal-block">
+        <h4>What people usually say</h4>
+        <p>${escapeHtml(scent.reviewSummary || "No review summary added yet.")}</p>
+      </div>
+
+      ${
+        sourceLinks
+          ? `
+            <div class="scent-modal-block scent-modal-block-full">
+              <h4>Sources</h4>
+              <ul class="scent-source-list">
+                ${sourceLinks}
+              </ul>
+            </div>
+          `
+          : ""
+      }
+    </div>
+  `;
+
+  scentModal.hidden = false;
+  document.body.classList.add("modal-open");
+}
+
+function closeScentModal() {
+  if (!scentModal) return;
+  scentModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+function prettyTags(tags) {
+  return tags.slice(0, 6).join(", ");
+}
+
 function intersect(a, b) {
   const bSet = new Set(b);
   return a.filter((item) => bSet.has(item));
@@ -679,6 +793,15 @@ function dedupe(items) {
 }
 
 function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttr(str) {
   return String(str)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
