@@ -95,7 +95,6 @@
   color:var(--muted-2);
 }
 
-/* Windows-safe select styling */
 .form-group select,
 #orderType,
 #bottleSize{
@@ -108,7 +107,6 @@
   cursor:pointer;
 }
 
-/* Dropdown menu items */
 .form-group select option,
 #orderType option,
 #bottleSize option{
@@ -116,14 +114,12 @@
   color:#ffffff;
 }
 
-/* First placeholder option */
 .form-group select option[value=""],
 #orderType option[value=""],
 #bottleSize option[value=""]{
   color:rgba(255,255,255,0.82);
 }
 
-/* Focus */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
@@ -131,7 +127,6 @@
   box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset;
 }
 
-/* Optional subtle hover for selects */
 .form-group select:hover{
   background:
     linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.07));

@@ -63,11 +63,7 @@
   flex-wrap:wrap;
 }
 
-@media (max-width:900px){
-  .results-grid{
-    grid-template-columns:1fr;
-  }
-}
+/* Modal */
 .scent-modal[hidden]{
   display:none !important;
 }
@@ -181,6 +177,12 @@
 .scent-source-list a{
   color:var(--text);
   text-decoration:underline;
+}
+
+@media (max-width:900px){
+  .results-grid{
+    grid-template-columns:1fr;
+  }
 }
 
 @media (max-width: 640px){

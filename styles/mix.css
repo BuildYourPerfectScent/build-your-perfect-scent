@@ -165,11 +165,6 @@
   flex-wrap:wrap;
 }
 
-@media (max-width:900px){
-  .checklist{
-    grid-template-columns:1fr;
-  }
-}
 .mix-choice-card{
   display:flex;
   align-items:center;
@@ -181,7 +176,7 @@
   padding:10px 12px;
 }
 
-.mix-choice{
+.mix-choice-card .mix-choice{
   flex:1 1 auto;
   min-width:0;
   border:none;
@@ -194,6 +189,7 @@
   min-width:150px;
 }
 
+/* Modal */
 .scent-modal[hidden]{
   display:none !important;
 }
@@ -309,7 +305,13 @@
   text-decoration:underline;
 }
 
-@media (max-width: 640px){
+@media (max-width:900px){
+  .checklist{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:640px){
   .mix-choice-card{
     flex-direction:column;
     align-items:stretch;
