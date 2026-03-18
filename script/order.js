@@ -26,8 +26,8 @@ const EMAILJS_TEMPLATE_ID = "template_j7ie0sq";
 const BOTTLE_PRICES = {
   "10 ml": 200,
   "30 ml": 500,
-  "50 ml": null,
-  "100 ml": null
+  "50 ml": 800,
+  "100 ml": 1500
 };
 
 document.addEventListener("DOMContentLoaded", () => {
