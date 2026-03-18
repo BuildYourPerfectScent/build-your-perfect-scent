@@ -54,248 +54,32 @@
 }
 
 .motif-card{
-  position: relative;
   border: 1px solid var(--stroke);
   background: rgba(255,255,255,0.04);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  height: 420px;
-  width: 100%;
-  padding: 0;
-}
-
-.slider{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.slides{
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.slide{
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.65s ease;
-}
-
-.slide.active{
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.slide img,
-.slide video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.slider::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.14));
-  pointer-events: none;
-  z-index: 1;
-}
-
-.slider-arrow{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.24);
-  background: rgba(27, 12, 16, 0.34);
-  color: var(--text);
-  font-size: 28px;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
-}
-
-.slider-arrow:hover{
-  transform: translateY(-50%) scale(1.04);
-  background: rgba(27, 12, 16, 0.46);
-  border-color: rgba(255,255,255,0.34);
-}
-
-.slider-arrow-prev{
-  left: 14px;
-}
-
-.slider-arrow-next{
-  right: 14px;
-}
-
-.slider-dots{
-  position: absolute;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
+  min-height: 420px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  z-index: 3;
-}
-
-.slider-dot{
-  width: 9px;
-  height: 9px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.42);
-  cursor: pointer;
-  padding: 0;
-  transition: transform 140ms ease, background 140ms ease;
-}
-
-.slider-dot:hover{
-  transform: scale(1.1);
-}
-
-.slider-dot.active{
-  background: rgba(255,255,255,0.96);
-  transform: scale(1.15);
-}
-
-.steps-grid,
-.features-grid,
-.bottle-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 16px;
-}
-
-.step-card,
-.feature-card,
-.bottle-card{
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow);
-  transition: transform 140ms ease, background 140ms ease;
-}
-
-.step-card:hover,
-.feature-card:hover,
-.bottle-card:hover{
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.07);
-}
-
-.step-number{
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.06);
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  padding: 24px;
 }
 
-.step-card h3,
-.feature-card h3,
-.bottle-card h3{
+.motif-placeholder{
+  text-align: center;
+  color: var(--muted);
+}
+
+.motif-placeholder h3{
   margin: 0 0 8px;
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
 }
 
-.step-card p,
-.feature-card p,
-.bottle-card p{
+.motif-placeholder p{
   margin: 0;
-  color: var(--muted);
   font-size: 15px;
   font-weight: 500;
-}
-
-.cta-card{
-  text-align: center;
-  padding: 28px;
-}
-
-.cta-card .section-title{
-  margin-bottom: 10px;
-}
-
-.cta-card .section-subtitle{
-  max-width: 50ch;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 18px;
-}
-
-.contact-card p{
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.contact-card span{
-  color: var(--text);
-  font-weight: 700;
-}
-
-@media (max-width: 900px){
-  .hero-inner,
-  .steps-grid,
-  .features-grid,
-  .bottle-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .motif-card{
-    height: 280px;
-  }
-}
-
-@media (max-width: 640px){
-  .motif-card{
-    height: 260px;
-  }
-
-  .slider-arrow{
-    width: 38px;
-    height: 38px;
-    font-size: 24px;
-  }
-
-  .slider-arrow-prev{
-    left: 10px;
-  }
-
-  .slider-arrow-next{
-    right: 10px;
-  }
-
-  .slider-dots{
-    bottom: 12px;
-  }
 }
